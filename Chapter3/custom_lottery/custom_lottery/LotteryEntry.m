@@ -59,5 +59,4 @@
     return [[NSString alloc] initWithFormat:@"%@ = %d and %d", [dateFormatter stringFromDate:_entryDate], _firstNumber, _secondNumber];
 }
 
-
 @end
