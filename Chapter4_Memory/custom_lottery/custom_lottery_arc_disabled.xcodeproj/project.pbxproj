@@ -24,7 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C007502424B8613F00595D75 /* custom_lottery */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = custom_lottery; sourceTree = BUILT_PRODUCTS_DIR; };
+		C007502424B8613F00595D75 /* custom_lottery_arc_disabled */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = custom_lottery_arc_disabled; sourceTree = BUILT_PRODUCTS_DIR; };
 		C007502724B8613F00595D75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C007502E24B8615800595D75 /* LotteryEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotteryEntry.h; sourceTree = "<group>"; };
 		C007502F24B8615800595D75 /* LotteryEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotteryEntry.m; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		C007501B24B8613F00595D75 = {
 			isa = PBXGroup;
 			children = (
-				C007502624B8613F00595D75 /* custom_lottery */,
+				C007502624B8613F00595D75 /* custom_lottery_arc_disabled */,
 				C007502524B8613F00595D75 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,27 +52,27 @@
 		C007502524B8613F00595D75 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C007502424B8613F00595D75 /* custom_lottery */,
+				C007502424B8613F00595D75 /* custom_lottery_arc_disabled */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C007502624B8613F00595D75 /* custom_lottery */ = {
+		C007502624B8613F00595D75 /* custom_lottery_arc_disabled */ = {
 			isa = PBXGroup;
 			children = (
 				C007502724B8613F00595D75 /* main.m */,
 				C007502E24B8615800595D75 /* LotteryEntry.h */,
 				C007502F24B8615800595D75 /* LotteryEntry.m */,
 			);
-			path = custom_lottery;
+			path = custom_lottery_arc_disabled;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C007502324B8613F00595D75 /* custom_lottery */ = {
+		C007502324B8613F00595D75 /* custom_lottery_arc_disabled */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C007502B24B8613F00595D75 /* Build configuration list for PBXNativeTarget "custom_lottery" */;
+			buildConfigurationList = C007502B24B8613F00595D75 /* Build configuration list for PBXNativeTarget "custom_lottery_arc_disabled" */;
 			buildPhases = (
 				C007502024B8613F00595D75 /* Sources */,
 				C007502124B8613F00595D75 /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = custom_lottery;
+			name = custom_lottery_arc_disabled;
 			productName = custom_lottery;
-			productReference = C007502424B8613F00595D75 /* custom_lottery */;
+			productReference = C007502424B8613F00595D75 /* custom_lottery_arc_disabled */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -101,7 +101,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C007501F24B8613F00595D75 /* Build configuration list for PBXProject "custom_lottery" */;
+			buildConfigurationList = C007501F24B8613F00595D75 /* Build configuration list for PBXProject "custom_lottery_arc_disabled" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -114,7 +114,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C007502324B8613F00595D75 /* custom_lottery */,
+				C007502324B8613F00595D75 /* custom_lottery_arc_disabled */,
 			);
 		};
 /* End PBXProject section */
@@ -263,7 +263,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C007501F24B8613F00595D75 /* Build configuration list for PBXProject "custom_lottery" */ = {
+		C007501F24B8613F00595D75 /* Build configuration list for PBXProject "custom_lottery_arc_disabled" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C007502924B8613F00595D75 /* Debug */,
@@ -272,7 +272,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C007502B24B8613F00595D75 /* Build configuration list for PBXNativeTarget "custom_lottery" */ = {
+		C007502B24B8613F00595D75 /* Build configuration list for PBXNativeTarget "custom_lottery_arc_disabled" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C007502C24B8613F00595D75 /* Debug */,

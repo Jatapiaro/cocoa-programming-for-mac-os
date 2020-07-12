@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C007502324B8613F00595D75"
-               BuildableName = "custom_lottery"
-               BlueprintName = "custom_lottery"
-               ReferencedContainer = "container:custom_lottery.xcodeproj">
+               BuildableName = "custom_lottery_arc_disabled"
+               BlueprintName = "custom_lottery_arc_disabled"
+               ReferencedContainer = "container:custom_lottery_arc_disabled.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C007502324B8613F00595D75"
-            BuildableName = "custom_lottery"
-            BlueprintName = "custom_lottery"
-            ReferencedContainer = "container:custom_lottery.xcodeproj">
+            BuildableName = "custom_lottery_arc_disabled"
+            BlueprintName = "custom_lottery_arc_disabled"
+            ReferencedContainer = "container:custom_lottery_arc_disabled.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C007502324B8613F00595D75"
-            BuildableName = "custom_lottery"
-            BlueprintName = "custom_lottery"
-            ReferencedContainer = "container:custom_lottery.xcodeproj">
+            BuildableName = "custom_lottery_arc_disabled"
+            BlueprintName = "custom_lottery_arc_disabled"
+            ReferencedContainer = "container:custom_lottery_arc_disabled.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
