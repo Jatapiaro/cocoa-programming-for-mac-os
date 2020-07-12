@@ -15,13 +15,20 @@
     return [self initWithEntryDate:[NSDate date]];
 }
 
+- (void)dealloc
+{
+    NSLog(@"deallocating %@", self);
+    [_entryDate release];
+    [super dealloc];
+}
+
 - (id)initWithEntryDate:(NSDate *)date
 {
     self = [super init];
 
     if (self) {
         NSAssert(date != nil, @"Argument must be non nil");
-        _entryDate = date;
+        _entryDate = [date retain];
         _firstNumber = ((unsigned)random() % 100) + 1;
         _secondNumber = ((unsigned)random() % 100) + 1;
     }
@@ -31,8 +38,9 @@
 
 - (void)setEntryDate:(NSDate *)date
 {
-    _entryDate = date;
-    
+    [date retain];
+    [_entryDate retain];
+    _entryDate = date; 
 }
 
 - (NSDate *)entryDate
@@ -56,6 +64,7 @@
     [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
 
+    [dateFormatter autorelease];
     return [[NSString alloc] initWithFormat:@"%@ = %d and %d", [dateFormatter stringFromDate:_entryDate], _firstNumber, _secondNumber];
 }
 
