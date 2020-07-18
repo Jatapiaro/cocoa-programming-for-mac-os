@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Employee : NSObject
 
 @property (readwrite, copy) NSString *name;
-@property (readwrite) float expectedRise;
+@property (readwrite) float expectedRaise;
 
 @end
 

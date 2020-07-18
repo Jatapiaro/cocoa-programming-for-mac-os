@@ -9,8 +9,10 @@
 #import "Document.h"
 #import "Employee.h"
 
-@interface Document ()
+const NSString *nameColumnIdentifier = @"name";
+const NSString *expectedRaiseColumnIdentifier = @"expectedRaise";
 
+@interface Document ()
 @end
 
 @implementation Document
@@ -25,10 +27,26 @@
     return self;
 }
 
+- (void)awakeFromNib
+{
+    [self _configureTableViewColumnsSortDescriptors];
+}
+
+- (void)_configureTableViewColumnsSortDescriptors
+{
+    NSTableColumn *nameTableColumn = [_tableView tableColumnWithIdentifier:nameColumnIdentifier];
+    NSTableColumn *expectedRaiseTableColumn = [_tableView tableColumnWithIdentifier:expectedRaiseColumnIdentifier];
+
+    NSSortDescriptor *nameSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:nameColumnIdentifier ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSSortDescriptor *expectedRaiseSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:expectedRaiseColumnIdentifier ascending:YES selector:@selector(compare:)];
+
+    nameTableColumn.sortDescriptorPrototype = nameSortDescriptor;
+    expectedRaiseTableColumn.sortDescriptorPrototype = expectedRaiseSortDescriptor;
+}
+
 + (BOOL)autosavesInPlace {
     return YES;
 }
-
 
 - (NSString *)windowNibName {
     // Override returning the nib file name of the document
@@ -61,16 +79,48 @@
     return [employee valueForKey:tableColumn.identifier];
 }
 
+- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    Employee *employee = [_employees objectAtIndex:row];
+    [employee setValue:object forKey:tableColumn.identifier];
+
+    [_employees replaceObjectAtIndex:row withObject:employee];
+    [tableView reloadData];
+}
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
     return _employees.count;
 }
 
-// MARK: Actions
+- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray<NSSortDescriptor *> *)oldDescriptors
+{
+    [_employees sortUsingDescriptors:tableView.sortDescriptors];
+    [tableView reloadData];
+}
+
+// MARK: NSTableViewDelegate
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    NSInteger selectedRow = _tableView.selectedRow;
+    _removeButton.enabled = selectedRow != -1;
+}
+
+// MARK: Button Actions
 
 - (IBAction)addEmployee:(id)sender
 {
     [_employees addObject:[[Employee alloc] init]];
     [_tableView reloadData];
 }
+
+- (IBAction)removeEmployee:(id)sender
+{
+    NSInteger selectedRow = _tableView.selectedRow;
+    NSAssert(selectedRow != -1, @"Table View should have a selected item");
+    [_employees removeObjectAtIndex:selectedRow];
+    [_tableView reloadData];
+}
+
 @end

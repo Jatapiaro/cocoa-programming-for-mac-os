@@ -17,7 +17,7 @@
     if (self)
     {
         _name = @"Employee name";
-        _expectedRise = 0.5;
+        _expectedRaise = 0.5;
     }
 
     return self;
