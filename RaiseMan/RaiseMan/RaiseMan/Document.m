@@ -7,6 +7,9 @@
 //
 
 #import "Document.h"
+#import "Person.h"
+
+static void *RMDocumentKVOContext;
 
 @interface Document ()
 
@@ -51,12 +54,84 @@
     return YES;
 }
 
+// MARK: Employees Management
+
 - (void)setEmployees:(NSMutableArray *)employees
 {
-    if (employees == _employees)
+    if (_employees == employees)
         return;
 
+    for (Person *p in _employees)
+        [self _stopObservingPerson:p];
+
     _employees = employees;
+
+    for (Person *p in _employees)
+        [self _startObservingPerson:p];
+}
+
+// MARK: KVC Implementations
+
+- (void)insertObject:(Person *)person inEmployeesAtIndex:(NSUInteger)index
+{
+    NSUndoManager *undoManager = self.undoManager;
+    [[undoManager prepareWithInvocationTarget:self] removeObjectFromEmployeesAtIndex:index];
+
+    if (!undoManager.undoing)
+        [undoManager setActionName:@"Add Person"];
+
+    [self _startObservingPerson:person];
+    [_employees insertObject:person atIndex:index];
+}
+
+- (void)removeObjectFromEmployeesAtIndex:(NSUInteger)index
+{
+    NSUndoManager *undoManager = self.undoManager;
+    Person *person = [_employees objectAtIndex:index];
+    [[undoManager prepareWithInvocationTarget:self] insertObject:person inEmployeesAtIndex:index];
+
+    if (!undoManager.undoing)
+        [undoManager setActionName:@"Remove Person"];
+
+    [self _stopObservingPerson:person];
+    [_employees removeObjectAtIndex:index];
+}
+
+- (void)_startObservingPerson:(Person *)person
+{
+    [person addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionOld context:&RMDocumentKVOContext];
+    [person addObserver:self forKeyPath:@"expectedRaise" options:NSKeyValueObservingOptionOld context:&RMDocumentKVOContext];
+}
+
+- (void)_stopObservingPerson:(Person *)person
+{
+    [person removeObserver:self forKeyPath:@"name" context:&RMDocumentKVOContext];
+    [person removeObserver:self forKeyPath:@"expectedRaise" context:&RMDocumentKVOContext];
+}
+
+- (void)_changeKeyPath:(NSString *)keyPath ofObject:(id)object toValue:(id)newValue
+{
+    [object setValue:newValue forKey:keyPath];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+
+    // If the context doesnt match, the message
+    // must be intended for the super class
+    if (context != &RMDocumentKVOContext) {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        return;
+    }
+
+    NSUndoManager *undoManager = self.undoManager;
+    id oldValue = [change objectForKey:NSKeyValueChangeOldKey];
+
+    if (oldValue == [NSNull null])
+        oldValue = nil;
+
+    [[undoManager prepareWithInvocationTarget:self] _changeKeyPath:keyPath ofObject:object toValue:oldValue];
+    [undoManager setActionName:@"Edit"];
 }
 
 

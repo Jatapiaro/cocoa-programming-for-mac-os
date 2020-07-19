@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class Person;
 
 @interface Document : NSDocument
 
