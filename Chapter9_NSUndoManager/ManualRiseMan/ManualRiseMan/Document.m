@@ -9,8 +9,10 @@
 #import "Document.h"
 #import "Employee.h"
 
-const NSString *nameColumnIdentifier = @"name";
-const NSString *expectedRaiseColumnIdentifier = @"expectedRaise";
+static NSString * const nameColumnIdentifier =  @"name";
+static NSString * const expectedRaiseColumnIdentifier = @"expectedRaise";
+
+static void *RMDocumentKVOContext;
 
 @interface Document ()
 @end
@@ -111,7 +113,24 @@ const NSString *expectedRaiseColumnIdentifier = @"expectedRaise";
 
 - (IBAction)addEmployee:(id)sender
 {
-    [_employees addObject:[[Employee alloc] init]];
+    Employee *e = [[Employee alloc] init];
+    [self _startObservingEmployee:e];
+
+    NSUndoManager *undoManager = self.undoManager;
+    [[undoManager prepareWithInvocationTarget:self] _removeEmployee:e];
+
+    if (!undoManager.isUndoing)
+        [undoManager setActionName:@"Add Employee"];
+
+    [_employees addObject:e];
+    [_employees sortUsingDescriptors:_tableView.sortDescriptors];
+    [_tableView reloadData];
+}
+
+- (void)_removeEmployee:(Employee *)employee
+{
+    [self _stopObservingEmployee:employee];
+    [_employees removeObject:employee];
     [_tableView reloadData];
 }
 
@@ -119,7 +138,62 @@ const NSString *expectedRaiseColumnIdentifier = @"expectedRaise";
 {
     NSInteger selectedRow = _tableView.selectedRow;
     NSAssert(selectedRow != -1, @"Table View should have a selected item");
+
+    Employee *employee = [_employees objectAtIndex:selectedRow];
+    [self _stopObservingEmployee:employee];
+
+    NSUndoManager *undoManager = self.undoManager;
+    [[undoManager prepareWithInvocationTarget:self] _addEmployee:employee];
+
+    if (!undoManager.isUndoing)
+        [undoManager setActionName:@"Remove Employee"];
+
     [_employees removeObjectAtIndex:selectedRow];
+    [_tableView reloadData];
+}
+
+- (void)_addEmployee:(Employee *)employee
+{
+    [self _startObservingEmployee:employee];
+    [_employees addObject:employee];
+    [_employees sortUsingDescriptors:_tableView.sortDescriptors];
+    [_tableView reloadData];
+}
+
+// MARK: Key Value Observing
+
+- (void)_startObservingEmployee:(Employee *)employee
+{
+    [employee addObserver:self forKeyPath:nameColumnIdentifier options:NSKeyValueObservingOptionOld context:&RMDocumentKVOContext];
+    [employee addObserver:self forKeyPath:expectedRaiseColumnIdentifier options:NSKeyValueObservingOptionOld context:&RMDocumentKVOContext];
+}
+
+- (void)_stopObservingEmployee:(Employee *)employee
+{
+    [employee removeObserver:self forKeyPath:nameColumnIdentifier context:&RMDocumentKVOContext];
+    [employee removeObserver:self forKeyPath:expectedRaiseColumnIdentifier context:&RMDocumentKVOContext];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if (context != &RMDocumentKVOContext) {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        return;
+    }
+
+    NSUndoManager *undoManager = self.undoManager;
+    id oldValue = [change objectForKey:NSKeyValueChangeOldKey];
+
+    if (oldValue == [NSNull null])
+        oldValue = nil;
+
+    [[undoManager prepareWithInvocationTarget:self] changeKeyPath:keyPath ofObject:object toValue:oldValue];
+    [undoManager setActionName:@"Edit Employee"];
+}
+
+- (void)changeKeyPath:(NSString *)keyPath ofObject:(id)object toValue:(id)value
+{
+    [object setValue:value forKey:keyPath];
     [_tableView reloadData];
 }
 

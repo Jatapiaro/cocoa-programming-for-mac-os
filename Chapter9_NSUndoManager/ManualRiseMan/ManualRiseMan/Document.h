@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class Employee;
 
 @interface Document : NSDocument <NSTableViewDataSource, NSTableViewDelegate>
 
