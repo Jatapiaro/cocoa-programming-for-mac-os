@@ -11,7 +11,11 @@
 
 @interface Document : NSDocument
 
+@property (nonatomic, weak) IBOutlet NSTableView *tableView;
+@property (nonatomic, weak) IBOutlet NSArrayController *employeeController;
 @property (nonatomic, copy) NSMutableArray *employees;
+
+-(IBAction)createEmployee:(id)sender;
 
 @end
 

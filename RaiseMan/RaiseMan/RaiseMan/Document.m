@@ -134,5 +134,45 @@ static void *RMDocumentKVOContext;
     [undoManager setActionName:@"Edit"];
 }
 
+// MARK: Actions
+
+- (void)createEmployee:(id)sender
+{
+    NSWindow *window = _tableView.window;
+    BOOL editingEnded = [window makeFirstResponder:window];
+
+    // Try to end any editing that is taking place
+    if (!editingEnded) {
+        NSLog(@"Unable to end editing");
+        return;
+    }
+
+    NSUndoManager *undoManager = self.undoManager;
+
+    // Has an edut occured already in this event
+    if (undoManager.groupingLevel > 0) {
+        // Close the last group
+        [undoManager endUndoGrouping];
+        //Open a new group
+        [undoManager beginUndoGrouping];
+    }
+
+    // Create the object
+    Person *p = [_employeeController newObject];
+    // Add it to the content array
+    [_employeeController addObject:p];
+
+    // Re-sort in case the user has a sorted column
+    [_employeeController rearrangeObjects];
+
+    // Get the sorted array
+    NSArray *array = _employeeController.arrangedObjects;
+    NSUInteger row = [array indexOfObject:p];
+
+    NSLog(@"Starting edit of %@ in row %lu", p, row);
+
+    // Begin the edit in the first column
+    [_tableView editColumn:0 row:row withEvent:nil select:YES];
+}
 
 @end

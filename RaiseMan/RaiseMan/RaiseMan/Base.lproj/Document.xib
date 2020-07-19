@@ -7,6 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="Document">
             <connections>
+                <outlet property="employeeController" destination="ZW6-6H-Qf9" id="B0P-Z4-tll"/>
+                <outlet property="tableView" destination="670-97-GaE" id="LIs-C8-AYw"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
         </customObject>
@@ -96,7 +98,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="add:" target="ZW6-6H-Qf9" id="pGg-WE-HXQ"/>
+                            <action selector="createEmployee:" target="-2" id="tPl-tw-fzd"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZMZ-NI-HNI">
