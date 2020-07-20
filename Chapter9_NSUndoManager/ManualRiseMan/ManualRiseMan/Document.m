@@ -113,33 +113,45 @@ static void *RMDocumentKVOContext;
 
 - (IBAction)addEmployee:(id)sender
 {
-    Employee *e = [[Employee alloc] init];
-    [self _startObservingEmployee:e];
+    NSWindow *window = _tableView.window;
+    BOOL editingEnded = [window makeFirstResponder:window];
+
+    if (!editingEnded) {
+        NSLog(@"Unable to end editing");
+        return;
+    }
 
     NSUndoManager *undoManager = self.undoManager;
-    [[undoManager prepareWithInvocationTarget:self] _removeEmployee:e];
+
+    //Has an edit already occurred in this event?
+    if (undoManager.groupingLevel > 0) {
+        [undoManager endUndoGrouping];
+        [undoManager beginUndoGrouping];
+    }
+
+    NSUInteger row = [self _addEmployee:[[Employee alloc] init]];
+    [_tableView editColumn:0 row:row withEvent:nil select:YES];
+}
+
+- (NSUInteger)_addEmployee:(Employee *)employee
+{
+    [self _startObservingEmployee:employee];
+
+    NSUndoManager *undoManager = self.undoManager;
+    [[undoManager prepareWithInvocationTarget:self] _removeEmployee:employee];
 
     if (!undoManager.isUndoing)
         [undoManager setActionName:@"Add Employee"];
 
-    [_employees addObject:e];
+    [_employees addObject:employee];
     [_employees sortUsingDescriptors:_tableView.sortDescriptors];
     [_tableView reloadData];
+
+    return [_employees indexOfObject:employee];
 }
 
 - (void)_removeEmployee:(Employee *)employee
 {
-    [self _stopObservingEmployee:employee];
-    [_employees removeObject:employee];
-    [_tableView reloadData];
-}
-
-- (IBAction)removeEmployee:(id)sender
-{
-    NSInteger selectedRow = _tableView.selectedRow;
-    NSAssert(selectedRow != -1, @"Table View should have a selected item");
-
-    Employee *employee = [_employees objectAtIndex:selectedRow];
     [self _stopObservingEmployee:employee];
 
     NSUndoManager *undoManager = self.undoManager;
@@ -148,16 +160,15 @@ static void *RMDocumentKVOContext;
     if (!undoManager.isUndoing)
         [undoManager setActionName:@"Remove Employee"];
 
-    [_employees removeObjectAtIndex:selectedRow];
+    [_employees removeObject:employee];
     [_tableView reloadData];
 }
 
-- (void)_addEmployee:(Employee *)employee
+- (IBAction)removeEmployee:(id)sender
 {
-    [self _startObservingEmployee:employee];
-    [_employees addObject:employee];
-    [_employees sortUsingDescriptors:_tableView.sortDescriptors];
-    [_tableView reloadData];
+    NSInteger selectedRow = _tableView.selectedRow;
+    NSAssert(selectedRow != -1, @"Table View should have a selected item");
+    [self _removeEmployee:[_employees objectAtIndex:selectedRow]];
 }
 
 // MARK: Key Value Observing
