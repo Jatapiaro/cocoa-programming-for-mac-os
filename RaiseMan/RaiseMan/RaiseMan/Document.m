@@ -26,10 +26,14 @@ static void *RMDocumentKVOContext;
     return self;
 }
 
+- (void)windowControllerDidLoadNib:(NSWindowController *)windowController
+{
+    [super windowControllerDidLoadNib:windowController];
+}
+
 + (BOOL)autosavesInPlace {
     return YES;
 }
-
 
 - (NSString *)windowNibName {
     // Override returning the nib file name of the document
@@ -41,8 +45,13 @@ static void *RMDocumentKVOContext;
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
     // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error if you return nil.
     // Alternatively, you could remove this method and override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-    [NSException raise:@"UnimplementedMethod" format:@"%@ is unimplemented", NSStringFromSelector(_cmd)];
-    return nil;
+
+    // End editing
+    [_tableView.window endEditingFor:nil];
+
+    // Create NSData object from the employees array
+    //return [NSKeyedArchiver archivedDataWithRootObject:_employees];
+    return [NSKeyedArchiver archivedDataWithRootObject:_employees requiringSecureCoding:NO error:nil];
 }
 
 
@@ -50,7 +59,23 @@ static void *RMDocumentKVOContext;
     // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error if you return NO.
     // Alternatively, you could remove this method and override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
     // If you do, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-    [NSException raise:@"UnimplementedMethod" format:@"%@ is unimplemented", NSStringFromSelector(_cmd)];
+
+    NSMutableArray *loadedData = nil;
+    @try {
+        //loadedData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingFromData:data error:nil];
+        loadedData = [unarchiver decodeObjectOfClass:NSMutableArray.class forKey:NSKeyedArchiveRootObjectKey];
+        [unarchiver finishDecoding];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception = %@", exception);
+        NSDictionary *dictionary = @{
+            @"The data is corrupted": NSLocalizedFailureReasonErrorKey,
+        };
+        *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:dictionary];
+        return NO;
+    }
+
+    _employees = loadedData;
     return YES;
 }
 

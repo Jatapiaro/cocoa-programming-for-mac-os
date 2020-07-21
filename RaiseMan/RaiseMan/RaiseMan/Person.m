@@ -12,11 +12,16 @@
 
 - (id)init
 {
+    return [self initWithName:@"New Employee" expectedRaise:0.5];
+}
+
+- (id)initWithName:(NSString *)name expectedRaise:(float)expectedRaise
+{
     self = [super init];
 
     if (self) {
-        _name = @"New employee";
-        _expectedRaise = 0.5;
+        _name = name;
+        _expectedRaise = expectedRaise;
     }
 
     return self;
@@ -28,6 +33,21 @@
         _expectedRaise = 0.0;
     else
         [super setNilValueForKey:key];
+}
+
+// MARK: Encoding
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+    NSString *name = [coder decodeObjectForKey:@"name"];
+    float expectedRaise = [coder decodeFloatForKey:@"expectedRaise"];
+    return [self initWithName:name expectedRaise:expectedRaise];
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [coder encodeObject:_name forKey:@"name"];
+    [coder encodeFloat:_expectedRaise forKey:@"expectedRaise"];
 }
 
 @end
