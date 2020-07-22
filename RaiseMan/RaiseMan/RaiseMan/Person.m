@@ -39,7 +39,7 @@
 
 - (id)initWithCoder:(NSCoder *)coder
 {
-    NSString *name = [coder decodeObjectForKey:@"name"];
+    NSString *name = [coder decodeObjectOfClass:NSString.class forKey:@"name"];
     float expectedRaise = [coder decodeFloatForKey:@"expectedRaise"];
     return [self initWithName:name expectedRaise:expectedRaise];
 }
@@ -48,6 +48,11 @@
 {
     [coder encodeObject:_name forKey:@"name"];
     [coder encodeFloat:_expectedRaise forKey:@"expectedRaise"];
+}
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
 }
 
 @end

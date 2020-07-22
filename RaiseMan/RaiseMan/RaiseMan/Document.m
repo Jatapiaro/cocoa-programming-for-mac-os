@@ -50,7 +50,6 @@ static void *RMDocumentKVOContext;
     [_tableView.window endEditingFor:nil];
 
     // Create NSData object from the employees array
-    //return [NSKeyedArchiver archivedDataWithRootObject:_employees];
     return [NSKeyedArchiver archivedDataWithRootObject:_employees requiringSecureCoding:NO error:nil];
 }
 
@@ -62,9 +61,9 @@ static void *RMDocumentKVOContext;
 
     NSMutableArray *loadedData = nil;
     @try {
-        //loadedData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingFromData:data error:nil];
-        loadedData = [unarchiver decodeObjectOfClass:NSMutableArray.class forKey:NSKeyedArchiveRootObjectKey];
+        NSSet *classes = [NSSet setWithObjects:NSMutableArray.class, Person.class, nil];
+        loadedData = [unarchiver decodeObjectOfClasses:classes forKey:NSKeyedArchiveRootObjectKey];
         [unarchiver finishDecoding];
     } @catch (NSException *exception) {
         NSLog(@"Exception = %@", exception);
