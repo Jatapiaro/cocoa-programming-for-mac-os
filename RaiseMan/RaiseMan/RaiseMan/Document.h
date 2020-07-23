@@ -15,6 +15,8 @@
 @property (nonatomic, weak) IBOutlet NSArrayController *employeeController;
 @property (nonatomic, copy) NSMutableArray *employees;
 
+-(void)setEmployees:(NSMutableArray *)employees;
+
 -(IBAction)createEmployee:(id)sender;
 
 @end

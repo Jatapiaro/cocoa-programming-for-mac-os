@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Person : NSObject
+@interface Person : NSObject <NSSecureCoding>
 
 @property (copy) NSString *name;
 @property float expectedRaise;
