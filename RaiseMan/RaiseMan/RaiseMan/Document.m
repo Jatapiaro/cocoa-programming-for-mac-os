@@ -74,7 +74,8 @@ static void *RMDocumentKVOContext;
         return NO;
     }
 
-    _employees = loadedData;
+    // By adding self.employees we will call the setter
+    self.employees = loadedData;
     return YES;
 }
 
