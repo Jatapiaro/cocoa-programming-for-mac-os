@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C0E1D2E124C09ECF0064C378 /* ManualRiseMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManualRiseMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0E1D2E124C09ECF0064C378 /* ManualRaiseMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManualRaiseMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E1D2E424C09ECF0064C378 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C0E1D2E524C09ECF0064C378 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C0E1D2E724C09ECF0064C378 /* Document.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
@@ -27,7 +27,7 @@
 		C0E1D2F024C09ED80064C378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C0E1D2F224C09ED80064C378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0E1D2F324C09ED80064C378 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C0E1D2F524C09ED80064C378 /* ManualRiseMan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ManualRiseMan.entitlements; sourceTree = "<group>"; };
+		C0E1D2F524C09ED80064C378 /* ManualRaiseMan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ManualRaiseMan.entitlements; sourceTree = "<group>"; };
 		C0E1D2FB24C09F2C0064C378 /* Employee.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Employee.h; sourceTree = "<group>"; };
 		C0E1D2FC24C09F2C0064C378 /* Employee.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Employee.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,7 +46,7 @@
 		C0E1D2D824C09ECF0064C378 = {
 			isa = PBXGroup;
 			children = (
-				C0E1D2E324C09ECF0064C378 /* ManualRiseMan */,
+				C0E1D2E324C09ECF0064C378 /* ManualRaiseMan */,
 				C0E1D2E224C09ECF0064C378 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +54,12 @@
 		C0E1D2E224C09ECF0064C378 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C0E1D2E124C09ECF0064C378 /* ManualRiseMan.app */,
+				C0E1D2E124C09ECF0064C378 /* ManualRaiseMan.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C0E1D2E324C09ECF0064C378 /* ManualRiseMan */ = {
+		C0E1D2E324C09ECF0064C378 /* ManualRaiseMan */ = {
 			isa = PBXGroup;
 			children = (
 				C0E1D2FC24C09F2C0064C378 /* Employee.m */,
@@ -73,17 +73,17 @@
 				C0E1D2EF24C09ED80064C378 /* MainMenu.xib */,
 				C0E1D2F224C09ED80064C378 /* Info.plist */,
 				C0E1D2F324C09ED80064C378 /* main.m */,
-				C0E1D2F524C09ED80064C378 /* ManualRiseMan.entitlements */,
+				C0E1D2F524C09ED80064C378 /* ManualRaiseMan.entitlements */,
 			);
-			path = ManualRiseMan;
+			path = ManualRaiseMan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C0E1D2E024C09ECF0064C378 /* ManualRiseMan */ = {
+		C0E1D2E024C09ECF0064C378 /* ManualRaiseMan */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C0E1D2F824C09ED80064C378 /* Build configuration list for PBXNativeTarget "ManualRiseMan" */;
+			buildConfigurationList = C0E1D2F824C09ED80064C378 /* Build configuration list for PBXNativeTarget "ManualRaiseMan" */;
 			buildPhases = (
 				C0E1D2DD24C09ECF0064C378 /* Sources */,
 				C0E1D2DE24C09ECF0064C378 /* Frameworks */,
@@ -93,9 +93,9 @@
 			);
 			dependencies = (
 			);
-			name = ManualRiseMan;
+			name = ManualRaiseMan;
 			productName = ManualRiseMan;
-			productReference = C0E1D2E124C09ECF0064C378 /* ManualRiseMan.app */;
+			productReference = C0E1D2E124C09ECF0064C378 /* ManualRaiseMan.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -112,7 +112,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C0E1D2DC24C09ECF0064C378 /* Build configuration list for PBXProject "ManualRiseMan" */;
+			buildConfigurationList = C0E1D2DC24C09ECF0064C378 /* Build configuration list for PBXProject "ManualRaiseMan" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -125,7 +125,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C0E1D2E024C09ECF0064C378 /* ManualRiseMan */,
+				C0E1D2E024C09ECF0064C378 /* ManualRaiseMan */,
 			);
 		};
 /* End PBXProject section */
@@ -293,12 +293,12 @@
 				CODE_SIGN_ENTITLEMENTS = ManualRiseMan/ManualRiseMan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = ManualRiseMan/Info.plist;
+				INFOPLIST_FILE = ManualRaiseMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jatapiaro.ManualRiseMan;
+				PRODUCT_BUNDLE_IDENTIFIER = jatapiaro.ManualRaiseMan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -310,12 +310,12 @@
 				CODE_SIGN_ENTITLEMENTS = ManualRiseMan/ManualRiseMan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = ManualRiseMan/Info.plist;
+				INFOPLIST_FILE = ManualRaiseMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jatapiaro.ManualRiseMan;
+				PRODUCT_BUNDLE_IDENTIFIER = jatapiaro.ManualRaiseMan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -323,7 +323,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C0E1D2DC24C09ECF0064C378 /* Build configuration list for PBXProject "ManualRiseMan" */ = {
+		C0E1D2DC24C09ECF0064C378 /* Build configuration list for PBXProject "ManualRaiseMan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0E1D2F624C09ED80064C378 /* Debug */,
@@ -332,7 +332,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C0E1D2F824C09ED80064C378 /* Build configuration list for PBXNativeTarget "ManualRiseMan" */ = {
+		C0E1D2F824C09ED80064C378 /* Build configuration list for PBXNativeTarget "ManualRaiseMan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0E1D2F924C09ED80064C378 /* Debug */,

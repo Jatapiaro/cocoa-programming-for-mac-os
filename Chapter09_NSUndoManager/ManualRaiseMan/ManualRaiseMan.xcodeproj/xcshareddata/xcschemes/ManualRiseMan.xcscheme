@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C0E1D2E024C09ECF0064C378"
-               BuildableName = "ManualRiseMan.app"
-               BlueprintName = "ManualRiseMan"
-               ReferencedContainer = "container:ManualRiseMan.xcodeproj">
+               BuildableName = "ManualRaiseMan.app"
+               BlueprintName = "ManualRaiseMan"
+               ReferencedContainer = "container:ManualRaiseMan.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C0E1D2E024C09ECF0064C378"
-            BuildableName = "ManualRiseMan.app"
-            BlueprintName = "ManualRiseMan"
-            ReferencedContainer = "container:ManualRiseMan.xcodeproj">
+            BuildableName = "ManualRaiseMan.app"
+            BlueprintName = "ManualRaiseMan"
+            ReferencedContainer = "container:ManualRaiseMan.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C0E1D2E024C09ECF0064C378"
-            BuildableName = "ManualRiseMan.app"
-            BlueprintName = "ManualRiseMan"
-            ReferencedContainer = "container:ManualRiseMan.xcodeproj">
+            BuildableName = "ManualRaiseMan.app"
+            BlueprintName = "ManualRaiseMan"
+            ReferencedContainer = "container:ManualRaiseMan.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
