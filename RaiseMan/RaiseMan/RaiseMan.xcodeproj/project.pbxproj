@@ -14,6 +14,10 @@
 		C039D2CA24C4E6310086E6C6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C039D2C824C4E6310086E6C6 /* MainMenu.xib */; };
 		C039D2CD24C4E6310086E6C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C039D2CC24C4E6310086E6C6 /* main.m */; };
 		C039D2D624C4E7AB0086E6C6 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = C039D2D524C4E7AB0086E6C6 /* Person.m */; };
+		C08CF14224D555D400769D83 /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08CF14024D555D400769D83 /* PreferenceController.m */; };
+		C08CF14324D555D400769D83 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = C08CF14124D555D400769D83 /* Preferences.xib */; };
+		C08CF14624D556E600769D83 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08CF14524D556E600769D83 /* AppController.m */; };
+		C08CF14824D55EC700769D83 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = C08CF14724D55EC700769D83 /* About.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,12 @@
 		C039D2CE24C4E6310086E6C6 /* RaiseMan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RaiseMan.entitlements; sourceTree = "<group>"; };
 		C039D2D424C4E7AB0086E6C6 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		C039D2D524C4E7AB0086E6C6 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		C08CF13F24D555D400769D83 /* PreferenceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
+		C08CF14024D555D400769D83 /* PreferenceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceController.m; sourceTree = "<group>"; };
+		C08CF14124D555D400769D83 /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		C08CF14424D556E600769D83 /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		C08CF14524D556E600769D83 /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
+		C08CF14724D55EC700769D83 /* About.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = About.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,12 @@
 				C039D2CE24C4E6310086E6C6 /* RaiseMan.entitlements */,
 				C039D2D424C4E7AB0086E6C6 /* Person.h */,
 				C039D2D524C4E7AB0086E6C6 /* Person.m */,
+				C08CF13F24D555D400769D83 /* PreferenceController.h */,
+				C08CF14024D555D400769D83 /* PreferenceController.m */,
+				C08CF14124D555D400769D83 /* Preferences.xib */,
+				C08CF14424D556E600769D83 /* AppController.h */,
+				C08CF14724D55EC700769D83 /* About.xib */,
+				C08CF14524D556E600769D83 /* AppController.m */,
 			);
 			path = RaiseMan;
 			sourceTree = "<group>";
@@ -135,8 +151,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C08CF14324D555D400769D83 /* Preferences.xib in Resources */,
 				C039D2C724C4E6310086E6C6 /* Assets.xcassets in Resources */,
 				C039D2C524C4E62F0086E6C6 /* Document.xib in Resources */,
+				C08CF14824D55EC700769D83 /* About.xib in Resources */,
 				C039D2CA24C4E6310086E6C6 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,7 +167,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C039D2C224C4E62F0086E6C6 /* Document.m in Sources */,
+				C08CF14624D556E600769D83 /* AppController.m in Sources */,
 				C039D2CD24C4E6310086E6C6 /* main.m in Sources */,
+				C08CF14224D555D400769D83 /* PreferenceController.m in Sources */,
 				C039D2D624C4E7AB0086E6C6 /* Person.m in Sources */,
 				C039D2BF24C4E62F0086E6C6 /* AppDelegate.m in Sources */,
 			);
