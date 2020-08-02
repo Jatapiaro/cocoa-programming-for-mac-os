@@ -15,8 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet NSColorWell *colorWell;
 @property (nonatomic, weak) IBOutlet NSButton *checkbox;
 
--(IBAction)changeBackgroundColor:(id)sender;
--(IBAction)changeNewEmptyDocument:(id)sender;
++ (NSColor *)preferenceTableBackgroundColor;
++ (void)setPreferenceTableBackgroundColor:(NSColor *)color;
++ (BOOL)preferenceEmptyDocument;
++ (void)setPreferenceEmptyDocument:(BOOL)emptyDocument;
+
+- (IBAction)changeBackgroundColor:(id)sender;
+- (IBAction)changeNewEmptyDocument:(id)sender;
+- (IBAction)resetUserPreferences:(id)sender;
 
 @end
 

@@ -8,6 +8,7 @@
 
 #import "Document.h"
 #import "Person.h"
+#import "PreferenceController.h"
 
 static void *RMDocumentKVOContext;
 
@@ -29,6 +30,7 @@ static void *RMDocumentKVOContext;
 - (void)windowControllerDidLoadNib:(NSWindowController *)windowController
 {
     [super windowControllerDidLoadNib:windowController];
+    _tableView.backgroundColor = [PreferenceController preferenceTableBackgroundColor];
 }
 
 + (BOOL)autosavesInPlace {

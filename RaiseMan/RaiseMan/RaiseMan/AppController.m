@@ -8,9 +8,26 @@
 
 #import "AppController.h"
 #import "PreferenceController.h"
+#import "UserDefaults.h"
 
 @implementation AppController {
     PreferenceController *preferenceController;
+}
+
++ (void)initialize
+{
+    NSData *colorAsData = [NSKeyedArchiver archivedDataWithRootObject:NSColor.yellowColor requiringSecureCoding:NO error:nil];
+    NSNumber *openUntitled = [NSNumber numberWithBool:YES];
+
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:@[
+                                   colorAsData,
+                                   openUntitled,
+                               ] forKeys:@[
+                                   TableBackgroundColorKey,
+                                   EmptyDocumentKey,
+                               ]];
+
+    [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
 }
 
 - (void)showAboutPanel:(id)sender
@@ -27,6 +44,13 @@
         preferenceController = [[PreferenceController alloc] init];
 
     [preferenceController showWindow:nil];
+}
+
+// MARK: NSApplicationDelegate
+
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
+{
+    return [PreferenceController preferenceEmptyDocument];
 }
 
 @end
