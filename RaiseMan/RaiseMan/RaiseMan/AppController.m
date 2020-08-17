@@ -53,4 +53,9 @@
     return [PreferenceController preferenceEmptyDocument];
 }
 
+- (void)applicationDidResignActive:(NSNotification *)notification
+{
+    NSBeep();
+}
+
 @end
