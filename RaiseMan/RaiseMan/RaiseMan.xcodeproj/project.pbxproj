@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C0189A1D24D6380500D9918D /* UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = C0189A1C24D6380500D9918D /* UserDefaults.m */; };
+		C0189A1D24D6380500D9918D /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C0189A1C24D6380500D9918D /* AppConstants.m */; };
 		C039D2BF24C4E62F0086E6C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C039D2BE24C4E62F0086E6C6 /* AppDelegate.m */; };
 		C039D2C224C4E62F0086E6C6 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = C039D2C124C4E62F0086E6C6 /* Document.m */; };
 		C039D2C524C4E62F0086E6C6 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = C039D2C324C4E62F0086E6C6 /* Document.xib */; };
@@ -22,8 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C0189A1B24D6380500D9918D /* UserDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaults.h; sourceTree = "<group>"; };
-		C0189A1C24D6380500D9918D /* UserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDefaults.m; sourceTree = "<group>"; };
+		C0189A1B24D6380500D9918D /* AppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
+		C0189A1C24D6380500D9918D /* AppConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppConstants.m; sourceTree = "<group>"; };
 		C039D2BA24C4E62F0086E6C6 /* RaiseMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaiseMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C039D2BD24C4E62F0086E6C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C039D2BE24C4E62F0086E6C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -93,8 +93,8 @@
 				C08CF14424D556E600769D83 /* AppController.h */,
 				C08CF14724D55EC700769D83 /* About.xib */,
 				C08CF14524D556E600769D83 /* AppController.m */,
-				C0189A1B24D6380500D9918D /* UserDefaults.h */,
-				C0189A1C24D6380500D9918D /* UserDefaults.m */,
+				C0189A1B24D6380500D9918D /* AppConstants.h */,
+				C0189A1C24D6380500D9918D /* AppConstants.m */,
 			);
 			path = RaiseMan;
 			sourceTree = "<group>";
@@ -177,7 +177,7 @@
 				C08CF14224D555D400769D83 /* PreferenceController.m in Sources */,
 				C039D2D624C4E7AB0086E6C6 /* Person.m in Sources */,
 				C039D2BF24C4E62F0086E6C6 /* AppDelegate.m in Sources */,
-				C0189A1D24D6380500D9918D /* UserDefaults.m in Sources */,
+				C0189A1D24D6380500D9918D /* AppConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +319,7 @@
 				CODE_SIGN_ENTITLEMENTS = RaiseMan/RaiseMan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = RaiseMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -336,6 +337,7 @@
 				CODE_SIGN_ENTITLEMENTS = RaiseMan/RaiseMan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = RaiseMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

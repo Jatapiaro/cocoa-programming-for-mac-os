@@ -7,7 +7,7 @@
 //
 
 #import "PreferenceController.h"
-#import "UserDefaults.h"
+#import "AppConstants.h"
 
 @interface PreferenceController ()
 
@@ -62,6 +62,13 @@
     NSColor *color = _colorWell.color;
     NSLog(@"Color changed: %@ color", color);
     [PreferenceController setPreferenceTableBackgroundColor:color];
+
+    NSNotificationCenter *notificationCenter = NSNotificationCenter.defaultCenter;
+    [notificationCenter postNotificationName:TableBackgroundColorChangedNotificationKey object:self];
+
+    /* Book suggestion, just a sample of the userInfo
+        [notificationCenter postNotificationName:TableBackgroundColorChangedNotificationKey object:self userInfo:@{ @"color": color }];
+    */
 }
 
 - (void)changeNewEmptyDocument:(id)sender
@@ -78,6 +85,12 @@
     [defaults removeObjectForKey:EmptyDocumentKey];
 
     [self _loadDefaultsInPanel];
+    NSNotificationCenter *notificationCenter = NSNotificationCenter.defaultCenter;
+    [notificationCenter postNotificationName:TableBackgroundColorChangedNotificationKey object:self];
+
+    /* Book suggestion, just a sample of the userInfo
+        [notificationCenter postNotificationName:TableBackgroundColorChangedNotificationKey object:self userInfo:@{ @"color": [PreferenceController preferenceTableBackgroundColor] }];
+     */
 }
 
 - (void)_loadDefaultsInPanel

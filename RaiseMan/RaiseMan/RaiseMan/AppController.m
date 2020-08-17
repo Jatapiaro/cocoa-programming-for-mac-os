@@ -8,7 +8,7 @@
 
 #import "AppController.h"
 #import "PreferenceController.h"
-#import "UserDefaults.h"
+#import "AppConstants.h"
 
 @implementation AppController {
     PreferenceController *preferenceController;
@@ -51,6 +51,11 @@
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
 {
     return [PreferenceController preferenceEmptyDocument];
+}
+
+- (void)applicationDidResignActive:(NSNotification *)notification
+{
+    NSBeep();
 }
 
 @end
