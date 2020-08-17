@@ -8,7 +8,7 @@
 
 #import "AppController.h"
 #import "PreferenceController.h"
-#import "UserDefaults.h"
+#import "AppConstants.h"
 
 @implementation AppController {
     PreferenceController *preferenceController;

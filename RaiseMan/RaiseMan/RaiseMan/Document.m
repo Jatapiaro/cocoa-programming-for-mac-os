@@ -9,6 +9,7 @@
 #import "Document.h"
 #import "Person.h"
 #import "PreferenceController.h"
+#import "AppConstants.h"
 
 static void *RMDocumentKVOContext;
 
@@ -20,17 +21,24 @@ static void *RMDocumentKVOContext;
 
 - (instancetype)init {
 
-    self = [super init];
-    if (self)
+    if (self = [super init])
         _employees = [NSMutableArray array];
 
+    NSNotificationCenter *notificationCenter = NSNotificationCenter.defaultCenter;
+    [notificationCenter addObserver:self selector:@selector(_handleTableBackgroundColorChanged) name:TableBackgroundColorChangedNotificationKey object:nil];
+
     return self;
+}
+
+- (void)dealloc
+{
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)windowController
 {
     [super windowControllerDidLoadNib:windowController];
-    _tableView.backgroundColor = [PreferenceController preferenceTableBackgroundColor];
+    [self _handleTableBackgroundColorChanged];
 }
 
 + (BOOL)autosavesInPlace {
@@ -42,7 +50,6 @@ static void *RMDocumentKVOContext;
     // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
     return @"Document";
 }
-
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
     // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error if you return nil.
@@ -200,6 +207,20 @@ static void *RMDocumentKVOContext;
 
     // Begin the edit in the first column
     [_tableView editColumn:0 row:row withEvent:nil select:YES];
+}
+
+// MARK: Notifications for settings
+
+- (void)_handleTableBackgroundColorChanged
+{
+    _tableView.backgroundColor = [PreferenceController preferenceTableBackgroundColor];
+}
+
+// Unused, just for book porpuses of passing a user info dict
+
+- (void)_handleTableBackgroundColorChangedNotification:(NSNotification *)notification
+{
+    _tableView.backgroundColor = [notification.userInfo objectForKey:@"color"];
 }
 
 @end
