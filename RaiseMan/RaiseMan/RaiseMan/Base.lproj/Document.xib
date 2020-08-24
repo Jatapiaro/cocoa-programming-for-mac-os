@@ -32,7 +32,7 @@
                             <rect key="frame" x="1" y="1" width="304" height="371"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" headerView="6jk-uw-dkX" id="670-97-GaE">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" headerView="6jk-uw-dkX" id="670-97-GaE">
                                     <rect key="frame" x="0.0" y="0.0" width="304" height="346"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -110,7 +110,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="remove:" target="ZW6-6H-Qf9" id="01y-Mv-rDr"/>
+                            <action selector="removeEmployee:" target="-2" id="NcH-MT-g1P"/>
                             <binding destination="ZW6-6H-Qf9" name="enabled" keyPath="canRemove" id="240-Ho-I4n"/>
                         </connections>
                     </button>

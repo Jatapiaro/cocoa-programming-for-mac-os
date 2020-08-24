@@ -209,6 +209,47 @@ static void *RMDocumentKVOContext;
     [_tableView editColumn:0 row:row withEvent:nil select:YES];
 }
 
+- (void)removeEmployee:(id)sender
+{
+    NSArray<Person *> *selectedEmployees = _employeeController.selectedObjects;
+    NSAlert *alert = [self _createAlertWithMessageText:@"Do you really want to remove this people" defaultButton:@"Remove" alternateButton:@"Cancel" otherButton:@"Keep, but no raise" informativeTextWithFormat:[NSString stringWithFormat:@"%@ people will be removed", @(selectedEmployees.count)]];
+
+    // Block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior
+    [alert beginSheetModalForWindow:_tableView.window completionHandler:^(NSModalResponse returnCode) {
+        if (NSAlertFirstButtonReturn == returnCode)
+            [self->_employeeController remove:nil];
+
+        if (NSAlertThirdButtonReturn == returnCode) {
+            for (Person *p in selectedEmployees)
+                p.expectedRaise = 0;
+
+            [self->_employeeController rearrangeObjects];
+        }
+    }];
+}
+
+- (NSAlert *)_createAlertWithMessageText:(NSString *)messageText defaultButton:(NSString *)defaultButton alternateButton:(NSString *)alternateButton otherButton:(NSString *)otherButton informativeTextWithFormat:(NSString *)informativeText
+{
+    NSAlert *alert = [[NSAlert alloc] init];
+
+    if (messageText)
+        alert.messageText = messageText;
+
+    if (defaultButton)
+        [alert addButtonWithTitle:defaultButton];
+
+    if (alternateButton)
+        [alert addButtonWithTitle:alternateButton];
+
+    if (otherButton)
+        [alert addButtonWithTitle:otherButton];
+
+    if (informativeText)
+        alert.informativeText = informativeText;
+
+    return alert;
+}
+
 // MARK: Notifications for settings
 
 - (void)_handleTableBackgroundColorChanged
