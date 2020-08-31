@@ -10,6 +10,7 @@
 #import "Employee.h"
 #import "PreferencesController.h"
 #import "AppDefaults.h"
+#import "NSMutableArrayExtras.h"
 
 static NSString * const nameColumnIdentifier =  @"name";
 static NSString * const expectedRaiseColumnIdentifier = @"expectedRaise";
@@ -142,80 +143,100 @@ static void *RMDocumentKVOContext;
 
 - (IBAction)addEmployee:(id)sender
 {
-    NSWindow *window = _tableView.window;
-    BOOL editingEnded = [window makeFirstResponder:window];
-
-    if (!editingEnded) {
+    if (!self._editingEnded) {
         NSLog(@"Unable to end editing");
         return;
     }
 
-    NSUndoManager *undoManager = self.undoManager;
+    [self _addEmployee:[[Employee alloc] init]];
+}
 
-    //Has an edit already occurred in this event?
-    if (undoManager.groupingLevel > 0) {
-        [undoManager endUndoGrouping];
-        [undoManager beginUndoGrouping];
-    }
+- (void)_addEmployee:(Employee *)employee
+{
+    [self _prepareGroupingLevel];
 
-    NSUInteger row = [self _addEmployees:@[ [[Employee alloc] init] ]];
+    [self _startObservingEmployee:employee];
+    [_employees addObject:employee];
+    [_employees sortUsingDescriptors:_tableView.sortDescriptors];
+
+    NSInteger row = [_employees indexOfObject:employee];
+    [[self.undoManager prepareWithInvocationTarget:self] _removeEmployees:@[ employee ] atIndexes:[NSIndexSet indexSetWithIndex:row]];
+
+    if (!self.undoManager.isUndoing)
+        [self.undoManager setActionName:@"Add employee"];
+
+    [_tableView reloadData];
     [_tableView editColumn:0 row:row withEvent:nil select:YES];
 }
 
-- (NSUInteger)_addEmployees:(NSArray<Employee *> *)employees
+- (void)_addEmployees:(NSArray<Employee *>*)employees atIndexes:(NSIndexSet *)indexes
 {
-    for (Employee *e in employees)
-        [self _startObservingEmployee:e];
+    [self _prepareGroupingLevel];
 
-    NSUndoManager *undoManager = self.undoManager;
+    for(Employee *employee in employees)
+        [self _startObservingEmployee:employee];
 
-    if (employees.count == 1) {
-        [[undoManager prepareWithInvocationTarget:self] _removeEmployees:@[ employees.firstObject ]];
+    NSIndexSet *indexesToRemove = indexes;
+    if (_tableView.sortDescriptors.count) {
+        [_employees addObjectsFromArray:employees];
+        [_employees sortUsingDescriptors:_tableView.sortDescriptors];
 
-        if (!undoManager.isUndoing)
-            [undoManager setActionName:@"Add Employee"];
-    } else {
-        [[undoManager prepareWithInvocationTarget:self] _removeEmployees:employees];
+        indexesToRemove = [_employees indexesOfObjectsInArray:employees];
+    } else
+        [_employees insertObjects:employees atIndexes:indexes];
 
-        if (!undoManager.isUndoing)
-            [undoManager setActionName:@"Add Employees"];
-    }
+    [[self.undoManager prepareWithInvocationTarget:self] _removeEmployees:employees atIndexes:indexesToRemove];
+    if (!self.undoManager.isUndoing)
+        [self.undoManager setActionName:employees.count == 1 ? @"Add employee" : @"Add employees"];
 
-    [_employees addObjectsFromArray:employees];
-    [_employees sortUsingDescriptors:_tableView.sortDescriptors];
     [_tableView reloadData];
-
-    return employees.count == 1 ? [_employees indexOfObject:employees.firstObject] : -1;
 }
 
 - (IBAction)removeEmployee:(id)sender
 {
     NSIndexSet *selectedRows = _tableView.selectedRowIndexes;
     NSAssert(selectedRows.count > 0, @"Table View should have a selected item");
-    [self _removeEmployees:[_employees objectsAtIndexes:selectedRows]];
+    [_tableView deselectAll:nil];
+    NSArray<Employee *> *removedEmployees = [_employees objectsAtIndexes:selectedRows];
+    [self _removeEmployees:removedEmployees atIndexes:selectedRows];
 }
 
-- (void)_removeEmployees:(NSArray<Employee *> *)employees
+- (void)_removeEmployees:(NSArray<Employee *>*)employees atIndexes:(NSIndexSet *)indexes
 {
-    for (Employee *e in employees)
-        [self _stopObservingEmployee:e];
-
-    NSUndoManager *undoManager = self.undoManager;
-
-    if (employees.count == 1) {
-        [[undoManager prepareWithInvocationTarget:self] _addEmployees:@[ employees.firstObject ]];
-
-        if (!undoManager.isUndoing)
-            [undoManager setActionName:@"Remove Employee"];
-    } else {
-        [[undoManager prepareWithInvocationTarget:self] _addEmployees:employees];
-
-        if (!undoManager.isUndoing)
-            [undoManager setActionName:@"Remove Employees"];
+    if (!self._editingEnded) {
+        NSLog(@"Unable to end editing");
+        return;
     }
 
-    [_employees removeObjectsAtIndexes:_tableView.selectedRowIndexes];
+    [self _prepareGroupingLevel];
+    [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        [self _stopObservingEmployee:[_employees objectAtIndex:idx]];
+    }];
+
+    [_employees removeObjectsAtIndexes:indexes];
+
+    [[self.undoManager prepareWithInvocationTarget:self] _addEmployees:employees atIndexes:indexes];
+    if (!self.undoManager.isUndoing)
+        [self.undoManager setActionName:employees.count == 1 ? @"Remove employee" : @"Remove employees"];
+
     [_tableView reloadData];
+}
+
+- (BOOL)_editingEnded
+{
+    NSWindow *window = _tableView.window;
+    return [window makeFirstResponder:window];
+}
+
+- (void)_prepareGroupingLevel
+{
+    NSUndoManager *undoManager = self.undoManager;
+
+    // Has an edit already occurred in this event?
+    if (undoManager.groupingLevel > 0) {
+        [undoManager endUndoGrouping];
+        [undoManager beginUndoGrouping];
+    }
 }
 
 // MARK: Key Value Observing

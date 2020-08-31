@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A38CF9124FC864E00B35A11 /* NSMutableArrayExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A38CF9024FC864E00B35A11 /* NSMutableArrayExtras.m */; };
 		C0189A1424D6316100D9918D /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0189A1324D6316100D9918D /* AppController.m */; };
 		C0189A1824D6326800D9918D /* AboutPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0189A1724D6326800D9918D /* AboutPanel.xib */; };
 		C0189A1A24D6332800D9918D /* PreferencesPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0189A1924D6332800D9918D /* PreferencesPanel.xib */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A38CF8F24FC864E00B35A11 /* NSMutableArrayExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSMutableArrayExtras.h; sourceTree = "<group>"; };
+		0A38CF9024FC864E00B35A11 /* NSMutableArrayExtras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSMutableArrayExtras.m; sourceTree = "<group>"; };
 		C0189A1224D6316100D9918D /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		C0189A1324D6316100D9918D /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		C0189A1724D6326800D9918D /* AboutPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutPanel.xib; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				C0189A1924D6332800D9918D /* PreferencesPanel.xib */,
 				C0189A1E24D78FB100D9918D /* AppDefaults.h */,
 				C0189A1F24D78FB100D9918D /* AppDefaults.m */,
+				0A38CF8F24FC864E00B35A11 /* NSMutableArrayExtras.h */,
+				0A38CF9024FC864E00B35A11 /* NSMutableArrayExtras.m */,
 			);
 			path = ManualRaiseMan;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C023DD3024D63016002DCF72 /* PreferencesController.m in Sources */,
+				0A38CF9124FC864E00B35A11 /* NSMutableArrayExtras.m in Sources */,
 				C0189A1424D6316100D9918D /* AppController.m in Sources */,
 				C0E1D2E924C09ECF0064C378 /* Document.m in Sources */,
 				C0E1D2F424C09ED80064C378 /* main.m in Sources */,
