@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A38CF9124FC864E00B35A11 /* NSMutableArrayExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A38CF9024FC864E00B35A11 /* NSMutableArrayExtras.m */; };
+		0A38CF9424FCDB4800B35A11 /* NSAlertExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A38CF9324FCDB4800B35A11 /* NSAlertExtras.m */; };
 		C0189A1424D6316100D9918D /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0189A1324D6316100D9918D /* AppController.m */; };
 		C0189A1824D6326800D9918D /* AboutPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0189A1724D6326800D9918D /* AboutPanel.xib */; };
 		C0189A1A24D6332800D9918D /* PreferencesPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0189A1924D6332800D9918D /* PreferencesPanel.xib */; };
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		0A38CF8F24FC864E00B35A11 /* NSMutableArrayExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSMutableArrayExtras.h; sourceTree = "<group>"; };
 		0A38CF9024FC864E00B35A11 /* NSMutableArrayExtras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSMutableArrayExtras.m; sourceTree = "<group>"; };
+		0A38CF9224FCDB4800B35A11 /* NSAlertExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSAlertExtras.h; sourceTree = "<group>"; };
+		0A38CF9324FCDB4800B35A11 /* NSAlertExtras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSAlertExtras.m; sourceTree = "<group>"; };
 		C0189A1224D6316100D9918D /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		C0189A1324D6316100D9918D /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		C0189A1724D6326800D9918D /* AboutPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutPanel.xib; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 				C0189A1F24D78FB100D9918D /* AppDefaults.m */,
 				0A38CF8F24FC864E00B35A11 /* NSMutableArrayExtras.h */,
 				0A38CF9024FC864E00B35A11 /* NSMutableArrayExtras.m */,
+				0A38CF9224FCDB4800B35A11 /* NSAlertExtras.h */,
+				0A38CF9324FCDB4800B35A11 /* NSAlertExtras.m */,
 			);
 			path = ManualRaiseMan;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A38CF9424FCDB4800B35A11 /* NSAlertExtras.m in Sources */,
 				C023DD3024D63016002DCF72 /* PreferencesController.m in Sources */,
 				0A38CF9124FC864E00B35A11 /* NSMutableArrayExtras.m in Sources */,
 				C0189A1424D6316100D9918D /* AppController.m in Sources */,

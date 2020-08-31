@@ -11,6 +11,7 @@
 #import "PreferencesController.h"
 #import "AppDefaults.h"
 #import "NSMutableArrayExtras.h"
+#import "NSAlertExtras.h"
 
 static NSString * const nameColumnIdentifier =  @"name";
 static NSString * const expectedRaiseColumnIdentifier = @"expectedRaise";
@@ -196,9 +197,24 @@ static void *RMDocumentKVOContext;
 {
     NSIndexSet *selectedRows = _tableView.selectedRowIndexes;
     NSAssert(selectedRows.count > 0, @"Table View should have a selected item");
-    [_tableView deselectAll:nil];
     NSArray<Employee *> *removedEmployees = [_employees objectsAtIndexes:selectedRows];
-    [self _removeEmployees:removedEmployees atIndexes:selectedRows];
+
+    NSAlert *alert = [NSAlert alertWithMessageText:@"Do you really want to remove this people" defaultButton:@"Remove" alternateButton:@"Cancel" otherButton:@"Keep, but no raise" informativeTextWithFormat:[NSString stringWithFormat:@"%@ people will be removed", @(removedEmployees.count)]];
+
+    [alert beginSheetModalForWindow:_tableView.window completionHandler:^(NSModalResponse returnCode) {
+        if (NSAlertFirstButtonReturn == returnCode) {
+            [self _removeEmployees:removedEmployees atIndexes:selectedRows];
+            [self->_tableView deselectAll:nil];
+        }
+
+        if (NSAlertThirdButtonReturn == returnCode) {
+            for (Employee *employee in removedEmployees)
+                employee.expectedRaise = 0;
+
+            [self->_tableView reloadDataForRowIndexes:selectedRows columnIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 2)]];
+            [self->_tableView deselectAll:nil];
+        }
+    }];
 }
 
 - (void)_removeEmployees:(NSArray<Employee *>*)employees atIndexes:(NSIndexSet *)indexes
