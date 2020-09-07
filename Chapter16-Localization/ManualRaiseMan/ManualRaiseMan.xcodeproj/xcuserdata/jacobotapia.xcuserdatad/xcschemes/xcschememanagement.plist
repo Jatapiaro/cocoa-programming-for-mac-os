@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>RaiseMan.xcscheme_^#shared#^_</key>
+		<key>ManualRiseMan.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>C039D2B924C4E62F0086E6C6</key>
+		<key>C0E1D2E024C09ECF0064C378</key>
 		<dict>
 			<key>primary</key>
 			<true/>
