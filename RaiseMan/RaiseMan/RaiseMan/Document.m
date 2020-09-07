@@ -212,7 +212,7 @@ static void *RMDocumentKVOContext;
 - (void)removeEmployee:(id)sender
 {
     NSArray<Person *> *selectedEmployees = _employeeController.selectedObjects;
-    NSAlert *alert = [self _createAlertWithMessageText:@"Do you really want to remove this people" defaultButton:@"Remove" alternateButton:@"Cancel" otherButton:@"Keep, but no raise" informativeTextWithFormat:[NSString stringWithFormat:@"%@ people will be removed", @(selectedEmployees.count)]];
+    NSAlert *alert = [self _createAlertWithMessageText:NSLocalizedString(@"REMOVE_MSG", @"Remove") defaultButton:NSLocalizedString(@"REMOVE", @"Remove") alternateButton:NSLocalizedString(@"CANCEL", @"Cancelar") otherButton:NSLocalizedString(@"KEEP", @"Keep but not raise") informativeTextWithFormat:[NSString stringWithFormat:NSLocalizedString(@"REMOVE_INF", @"%d people will be removed."), selectedEmployees.count]];
 
     // Block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior
     [alert beginSheetModalForWindow:_tableView.window completionHandler:^(NSModalResponse returnCode) {
