@@ -284,6 +284,11 @@ static void *RMDocumentKVOContext;
 
     [[undoManager prepareWithInvocationTarget:self] changeKeyPath:keyPath ofObject:object toValue:oldValue];
     [undoManager setActionName:@"Edit Employee"];
+
+    if (_tableView.sortDescriptors.count) {
+        [_employees sortUsingDescriptors:_tableView.sortDescriptors];
+        [_tableView reloadData];
+    }
 }
 
 - (void)changeKeyPath:(NSString *)keyPath ofObject:(id)object toValue:(id)value
