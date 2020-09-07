@@ -199,7 +199,7 @@ static void *RMDocumentKVOContext;
     NSAssert(selectedRows.count > 0, @"Table View should have a selected item");
     NSArray<Employee *> *removedEmployees = [_employees objectsAtIndexes:selectedRows];
 
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Do you really want to remove this people" defaultButton:@"Remove" alternateButton:@"Cancel" otherButton:@"Keep, but no raise" informativeTextWithFormat:[NSString stringWithFormat:@"%@ people will be removed", @(removedEmployees.count)]];
+    NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"REMOVE_MSG", @"Remove message") defaultButton:NSLocalizedString(@"REMOVE", @"Remove") alternateButton:NSLocalizedString(@"CANCEL", @"Cancel") otherButton:NSLocalizedString(@"KEEP", @"Keep but not raise") informativeTextWithFormat:[NSString stringWithFormat:NSLocalizedString(@"REMOVE_INF", @"%d people will be removed."), selectedRows.count]];
 
     [alert beginSheetModalForWindow:_tableView.window completionHandler:^(NSModalResponse returnCode) {
         if (NSAlertFirstButtonReturn == returnCode) {

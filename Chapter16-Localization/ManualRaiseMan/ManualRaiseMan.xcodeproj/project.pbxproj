@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A38CF9124FC864E00B35A11 /* NSMutableArrayExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A38CF9024FC864E00B35A11 /* NSMutableArrayExtras.m */; };
 		0A38CF9424FCDB4800B35A11 /* NSAlertExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A38CF9324FCDB4800B35A11 /* NSAlertExtras.m */; };
+		0AC742812506062B001DD37F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AC7427F2506062B001DD37F /* Localizable.strings */; };
 		C0189A1424D6316100D9918D /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0189A1324D6316100D9918D /* AppController.m */; };
 		C0189A1824D6326800D9918D /* AboutPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0189A1724D6326800D9918D /* AboutPanel.xib */; };
 		C0189A1A24D6332800D9918D /* PreferencesPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0189A1924D6332800D9918D /* PreferencesPanel.xib */; };
@@ -28,6 +29,10 @@
 		0A38CF9024FC864E00B35A11 /* NSMutableArrayExtras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSMutableArrayExtras.m; sourceTree = "<group>"; };
 		0A38CF9224FCDB4800B35A11 /* NSAlertExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSAlertExtras.h; sourceTree = "<group>"; };
 		0A38CF9324FCDB4800B35A11 /* NSAlertExtras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSAlertExtras.m; sourceTree = "<group>"; };
+		0AC7427D25060567001DD37F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Document.strings; sourceTree = "<group>"; };
+		0AC7427E250605BA001DD37F /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Document.strings"; sourceTree = "<group>"; };
+		0AC742802506062B001DD37F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0AC7428225060632001DD37F /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C0189A1224D6316100D9918D /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		C0189A1324D6316100D9918D /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		C0189A1724D6326800D9918D /* AboutPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutPanel.xib; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 				0A38CF9024FC864E00B35A11 /* NSMutableArrayExtras.m */,
 				0A38CF9224FCDB4800B35A11 /* NSAlertExtras.h */,
 				0A38CF9324FCDB4800B35A11 /* NSAlertExtras.m */,
+				0AC7427F2506062B001DD37F /* Localizable.strings */,
 			);
 			path = ManualRaiseMan;
 			sourceTree = "<group>";
@@ -150,6 +156,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"es-419",
 			);
 			mainGroup = C0E1D2D824C09ECF0064C378;
 			productRefGroup = C0E1D2E224C09ECF0064C378 /* Products */;
@@ -167,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0189A1A24D6332800D9918D /* PreferencesPanel.xib in Resources */,
+				0AC742812506062B001DD37F /* Localizable.strings in Resources */,
 				C0E1D2EE24C09ED80064C378 /* Assets.xcassets in Resources */,
 				C0189A1824D6326800D9918D /* AboutPanel.xib in Resources */,
 				C0E1D2EC24C09ECF0064C378 /* Document.xib in Resources */,
@@ -196,10 +204,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		0AC7427F2506062B001DD37F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0AC742802506062B001DD37F /* en */,
+				0AC7428225060632001DD37F /* es-419 */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		C0E1D2EA24C09ECF0064C378 /* Document.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C0E1D2EB24C09ECF0064C378 /* Base */,
+				0AC7427D25060567001DD37F /* en */,
+				0AC7427E250605BA001DD37F /* es-419 */,
 			);
 			name = Document.xib;
 			sourceTree = "<group>";
@@ -219,6 +238,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -277,6 +297,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
