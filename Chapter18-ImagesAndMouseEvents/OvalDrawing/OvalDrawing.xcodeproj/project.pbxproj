@@ -1,0 +1,375 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C03D65B12544DECD00AA21C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65B02544DECD00AA21C8 /* AppDelegate.m */; };
+		C03D65B42544DECD00AA21C8 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65B32544DECD00AA21C8 /* Document.m */; };
+		C03D65B72544DECD00AA21C8 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03D65B52544DECD00AA21C8 /* Document.xib */; };
+		C03D65B92544DED000AA21C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C03D65B82544DED000AA21C8 /* Assets.xcassets */; };
+		C03D65BC2544DED000AA21C8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03D65BA2544DED000AA21C8 /* MainMenu.xib */; };
+		C03D65BF2544DED000AA21C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65BE2544DED000AA21C8 /* main.m */; };
+		C03D65C82544DF5200AA21C8 /* DrawingCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65C72544DF5200AA21C8 /* DrawingCanvas.m */; };
+		C03D65CB254D829400AA21C8 /* Oval.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65CA254D829400AA21C8 /* Oval.m */; };
+		C03D65CF254E159C00AA21C8 /* DrawingToolsPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03D65CE254E159C00AA21C8 /* DrawingToolsPanel.xib */; };
+		C03D65D2254E161D00AA21C8 /* DrawingToolsPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65D1254E161D00AA21C8 /* DrawingToolsPanelController.m */; };
+		C03D65D5254E889100AA21C8 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65D4254E889100AA21C8 /* AppController.m */; };
+		C03D65D8254EA52300AA21C8 /* DrawingDocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65D7254EA52300AA21C8 /* DrawingDocumentWindowController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C03D65AC2544DECD00AA21C8 /* OvalDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OvalDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C03D65AF2544DECD00AA21C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C03D65B02544DECD00AA21C8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C03D65B22544DECD00AA21C8 /* Document.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
+		C03D65B32544DECD00AA21C8 /* Document.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		C03D65B62544DECD00AA21C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Document.xib; sourceTree = "<group>"; };
+		C03D65B82544DED000AA21C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C03D65BB2544DED000AA21C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C03D65BD2544DED000AA21C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C03D65BE2544DED000AA21C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C03D65C02544DED000AA21C8 /* OvalDrawing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OvalDrawing.entitlements; sourceTree = "<group>"; };
+		C03D65C62544DF5200AA21C8 /* DrawingCanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawingCanvas.h; sourceTree = "<group>"; };
+		C03D65C72544DF5200AA21C8 /* DrawingCanvas.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawingCanvas.m; sourceTree = "<group>"; };
+		C03D65C9254D829400AA21C8 /* Oval.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Oval.h; sourceTree = "<group>"; };
+		C03D65CA254D829400AA21C8 /* Oval.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Oval.m; sourceTree = "<group>"; };
+		C03D65CE254E159C00AA21C8 /* DrawingToolsPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawingToolsPanel.xib; sourceTree = "<group>"; };
+		C03D65D0254E161D00AA21C8 /* DrawingToolsPanelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawingToolsPanelController.h; sourceTree = "<group>"; };
+		C03D65D1254E161D00AA21C8 /* DrawingToolsPanelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawingToolsPanelController.m; sourceTree = "<group>"; };
+		C03D65D3254E889100AA21C8 /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		C03D65D4254E889100AA21C8 /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
+		C03D65D6254EA52300AA21C8 /* DrawingDocumentWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawingDocumentWindowController.h; sourceTree = "<group>"; };
+		C03D65D7254EA52300AA21C8 /* DrawingDocumentWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawingDocumentWindowController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C03D65A92544DECD00AA21C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C03D65A32544DECD00AA21C8 = {
+			isa = PBXGroup;
+			children = (
+				C03D65AE2544DECD00AA21C8 /* OvalDrawing */,
+				C03D65AD2544DECD00AA21C8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C03D65AD2544DECD00AA21C8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C03D65AC2544DECD00AA21C8 /* OvalDrawing.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C03D65AE2544DECD00AA21C8 /* OvalDrawing */ = {
+			isa = PBXGroup;
+			children = (
+				C03D65BA2544DED000AA21C8 /* MainMenu.xib */,
+				C03D65B52544DECD00AA21C8 /* Document.xib */,
+				C03D65AF2544DECD00AA21C8 /* AppDelegate.h */,
+				C03D65B02544DECD00AA21C8 /* AppDelegate.m */,
+				C03D65B22544DECD00AA21C8 /* Document.h */,
+				C03D65B32544DECD00AA21C8 /* Document.m */,
+				C03D65B82544DED000AA21C8 /* Assets.xcassets */,
+				C03D65BD2544DED000AA21C8 /* Info.plist */,
+				C03D65BE2544DED000AA21C8 /* main.m */,
+				C03D65C02544DED000AA21C8 /* OvalDrawing.entitlements */,
+				C03D65C62544DF5200AA21C8 /* DrawingCanvas.h */,
+				C03D65C72544DF5200AA21C8 /* DrawingCanvas.m */,
+				C03D65C9254D829400AA21C8 /* Oval.h */,
+				C03D65CA254D829400AA21C8 /* Oval.m */,
+				C03D65CE254E159C00AA21C8 /* DrawingToolsPanel.xib */,
+				C03D65D0254E161D00AA21C8 /* DrawingToolsPanelController.h */,
+				C03D65D1254E161D00AA21C8 /* DrawingToolsPanelController.m */,
+				C03D65D3254E889100AA21C8 /* AppController.h */,
+				C03D65D4254E889100AA21C8 /* AppController.m */,
+				C03D65D6254EA52300AA21C8 /* DrawingDocumentWindowController.h */,
+				C03D65D7254EA52300AA21C8 /* DrawingDocumentWindowController.m */,
+			);
+			path = OvalDrawing;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C03D65AB2544DECD00AA21C8 /* OvalDrawing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C03D65C32544DED000AA21C8 /* Build configuration list for PBXNativeTarget "OvalDrawing" */;
+			buildPhases = (
+				C03D65A82544DECD00AA21C8 /* Sources */,
+				C03D65A92544DECD00AA21C8 /* Frameworks */,
+				C03D65AA2544DECD00AA21C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OvalDrawing;
+			productName = OvalDrawing;
+			productReference = C03D65AC2544DECD00AA21C8 /* OvalDrawing.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C03D65A42544DECD00AA21C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Jacobo Tapia";
+				TargetAttributes = {
+					C03D65AB2544DECD00AA21C8 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = C03D65A72544DECD00AA21C8 /* Build configuration list for PBXProject "OvalDrawing" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C03D65A32544DECD00AA21C8;
+			productRefGroup = C03D65AD2544DECD00AA21C8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C03D65AB2544DECD00AA21C8 /* OvalDrawing */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C03D65AA2544DECD00AA21C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C03D65B92544DED000AA21C8 /* Assets.xcassets in Resources */,
+				C03D65B72544DECD00AA21C8 /* Document.xib in Resources */,
+				C03D65BC2544DED000AA21C8 /* MainMenu.xib in Resources */,
+				C03D65CF254E159C00AA21C8 /* DrawingToolsPanel.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C03D65A82544DECD00AA21C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C03D65CB254D829400AA21C8 /* Oval.m in Sources */,
+				C03D65D8254EA52300AA21C8 /* DrawingDocumentWindowController.m in Sources */,
+				C03D65B42544DECD00AA21C8 /* Document.m in Sources */,
+				C03D65BF2544DED000AA21C8 /* main.m in Sources */,
+				C03D65D2254E161D00AA21C8 /* DrawingToolsPanelController.m in Sources */,
+				C03D65D5254E889100AA21C8 /* AppController.m in Sources */,
+				C03D65C82544DF5200AA21C8 /* DrawingCanvas.m in Sources */,
+				C03D65B12544DECD00AA21C8 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C03D65B52544DECD00AA21C8 /* Document.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C03D65B62544DECD00AA21C8 /* Base */,
+			);
+			name = Document.xib;
+			sourceTree = "<group>";
+		};
+		C03D65BA2544DED000AA21C8 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C03D65BB2544DED000AA21C8 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C03D65C12544DED000AA21C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C03D65C22544DED000AA21C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C03D65C42544DED000AA21C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OvalDrawing/OvalDrawing.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = OvalDrawing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jatapiaro.OvalDrawing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C03D65C52544DED000AA21C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OvalDrawing/OvalDrawing.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = OvalDrawing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jatapiaro.OvalDrawing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C03D65A72544DECD00AA21C8 /* Build configuration list for PBXProject "OvalDrawing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C03D65C12544DED000AA21C8 /* Debug */,
+				C03D65C22544DED000AA21C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C03D65C32544DED000AA21C8 /* Build configuration list for PBXNativeTarget "OvalDrawing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C03D65C42544DED000AA21C8 /* Debug */,
+				C03D65C52544DED000AA21C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C03D65A42544DECD00AA21C8 /* Project object */;
+}

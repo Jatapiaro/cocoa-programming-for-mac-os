@@ -41,7 +41,7 @@
 - (void)_drawLines
 {
     for (NSInteger i = 0; i < 15; i++)
-    [_path lineToPoint:[self _randomPoint]];
+        [_path lineToPoint:[self _randomPoint]];
 }
 
 - (void)_drawCurves
