@@ -20,6 +20,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (DrawingToolsPanelController *)sharedDrawingToolsPanelController;
 - (void)updateBackgroundColor:(NSColor *)backgroundColor ovalColor:(NSColor *)ovalColor shouldFillOval:(BOOL)shouldFillOval radiusOfOval:(float)radiusOfOval;
 
+// MARK: Actions
+
+- (IBAction)colorDidChange:(NSColorWell *)sender;
+- (IBAction)drawingTypeDidChange:(NSPopUpButton *)sender;
+- (IBAction)radiusOfOvalDidChange:(NSSlider *)sender;
+
 @end
 
 NS_ASSUME_NONNULL_END

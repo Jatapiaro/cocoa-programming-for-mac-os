@@ -29,6 +29,9 @@
                         <rect key="frame" x="20" y="134" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="colorDidChange:" target="-2" id="n08-cd-v4k"/>
+                        </connections>
                     </colorWell>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5sp-3H-hrk">
                         <rect key="frame" x="70" y="138" width="177" height="16"/>
@@ -43,6 +46,9 @@
                         <rect key="frame" x="20" y="94" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="colorDidChange:" target="-2" id="RrG-sb-cLz"/>
+                        </connections>
                     </colorWell>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lg9-RL-0ng">
                         <rect key="frame" x="70" y="98" width="177" height="16"/>
@@ -70,11 +76,17 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="drawingTypeDidChange:" target="-2" id="iBA-vx-GG1"/>
+                        </connections>
                     </popUpButton>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uIK-21-nOv">
-                        <rect key="frame" x="18" y="18" width="229" height="19"/>
+                        <rect key="frame" x="18" y="19" width="229" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="e6L-w8-iwa"/>
+                        <sliderCell key="cell" state="on" alignment="left" minValue="10" maxValue="100" doubleValue="10" tickMarkPosition="below" numberOfTickMarks="10" sliderType="linear" id="e6L-w8-iwa"/>
+                        <connections>
+                            <action selector="radiusOfOvalDidChange:" target="-2" id="OSg-su-V6n"/>
+                        </connections>
                     </slider>
                 </subviews>
             </view>

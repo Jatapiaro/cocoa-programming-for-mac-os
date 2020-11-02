@@ -12,12 +12,14 @@
     NSRect _originRect;
 }
 
-- (instancetype)initWithRect:(NSRect)rect
+- (instancetype)initWithRect:(NSRect)rect color:(NSColor *)color filled:(BOOL)filled
 {
     if (!(self = [super init]))
         return nil;
 
     _originRect = rect;
+    _color = color;
+    _filled = filled;
     [super appendBezierPathWithOvalInRect:rect];
 
     return self;

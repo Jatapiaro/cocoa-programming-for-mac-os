@@ -42,4 +42,22 @@
     });
 }
 
+// MARK: Actions
+
+- (IBAction)colorDidChange:(NSColorWell *)sender
+{
+    if (sender == _ovalColorWell)
+        _ovalColor = sender.color;
+}
+
+- (void)drawingTypeDidChange:(NSPopUpButton *)sender
+{
+    _shouldFillOval = sender.selectedTag;
+}
+
+- (void)radiusOfOvalDidChange:(NSSlider *)sender
+{
+    _radiusOfOval = sender.floatValue;
+}
+
 @end

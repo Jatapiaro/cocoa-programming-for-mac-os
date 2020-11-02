@@ -16,6 +16,7 @@
 
 @implementation DrawingCanvas {
     NSMutableArray<Oval *> *_ovals;
+    DrawingToolsPanelController *_drawingToolsPanelController;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -24,6 +25,7 @@
         return nil;
 
     _ovals = [NSMutableArray array];
+    _drawingToolsPanelController = DrawingToolsPanelController.sharedDrawingToolsPanelController;
     return self;
 }
 
@@ -31,15 +33,17 @@
 {
     [super drawRect:dirtyRect];
 
-    DrawingToolsPanelController *drawingToolsPanelController = DrawingToolsPanelController.sharedDrawingToolsPanelController;
-
-    [drawingToolsPanelController.backgroundColor set];
+    [_drawingToolsPanelController.backgroundColor set];
     [NSBezierPath fillRect:self.bounds];
 
-    [drawingToolsPanelController.ovalColor set];
     for (Oval *oval in _ovals) {
         if ([oval isInRect:dirtyRect]) {
-            [oval fill];
+            [oval.color set];
+            
+            if (oval.filled)
+                [oval fill];
+            else
+                [oval stroke];
         }
     }
 }
@@ -57,8 +61,14 @@
     NSPoint mousePosition = [_scrollView convertPoint:center toView:nil];
     mousePosition = [_scrollView convertPoint:mousePosition toView:self];
 
-    NSRect rect = NSMakeRect(mousePosition.x - 5.0, mousePosition.y - 5.0, 10.0, 10.0);
-    Oval *oval = [[Oval alloc] initWithRect:rect];
+    CGFloat radius = _drawingToolsPanelController.radiusOfOval;
+    CGFloat diameter = radius * 2;
+    NSRect rect = NSMakeRect(mousePosition.x - radius, mousePosition.y - radius, diameter, diameter);
+
+    NSColor *colorOfOval = _drawingToolsPanelController.ovalColor;
+    BOOL shouldFillOval = _drawingToolsPanelController.shouldFillOval;
+
+    Oval *oval = [[Oval alloc] initWithRect:rect color:colorOfOval filled:shouldFillOval];
     [_ovals addObject:oval];
 
     self.needsDisplay = YES;
