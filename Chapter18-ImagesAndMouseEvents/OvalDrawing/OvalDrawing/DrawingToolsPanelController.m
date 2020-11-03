@@ -46,8 +46,16 @@
 
 - (IBAction)colorDidChange:(NSColorWell *)sender
 {
-    if (sender == _ovalColorWell)
+    if (sender == _ovalColorWell) {
         _ovalColor = sender.color;
+        return;
+    }
+
+    if (sender != _backgroundColorWell)
+        return;
+
+    _backgroundColor = sender.color;
+    [NSNotificationCenter.defaultCenter postNotificationName:@"BackgroundColorDidChange" object:self];
 }
 
 - (void)drawingTypeDidChange:(NSPopUpButton *)sender

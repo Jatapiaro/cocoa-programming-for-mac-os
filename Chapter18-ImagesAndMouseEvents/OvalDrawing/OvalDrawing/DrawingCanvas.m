@@ -26,7 +26,15 @@
 
     _ovals = [NSMutableArray array];
     _drawingToolsPanelController = DrawingToolsPanelController.sharedDrawingToolsPanelController;
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_backgroundColorDidChange) name:@"BackgroundColorDidChange" object:_drawingToolsPanelController];
+
     return self;
+}
+
+- (void)_backgroundColorDidChange
+{
+    if (self.window.isMainWindow)
+        self.needsDisplay = YES;
 }
 
 - (void)drawRect:(NSRect)dirtyRect

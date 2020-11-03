@@ -15,7 +15,8 @@
 
 @implementation DrawingDocumentWindowController
 
-- (void)windowDidLoad {
+- (void)windowDidLoad
+{
     [super windowDidLoad];
 
     DrawingToolsPanelController *drawingToolsPanelController = DrawingToolsPanelController.sharedDrawingToolsPanelController;
