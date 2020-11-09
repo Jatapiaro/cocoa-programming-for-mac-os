@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, readonly) NSColor *ovalColor;
 @property (nonatomic, readonly) BOOL shouldFillOval;
 @property (nonatomic, readonly) float radiusOfOval;
+@property (nonatomic, readonly) BOOL isDrawing;
 
 + (DrawingToolsPanelController *)sharedDrawingToolsPanelController;
 - (void)updateBackgroundColor:(NSColor *)backgroundColor ovalColor:(NSColor *)ovalColor shouldFillOval:(BOOL)shouldFillOval radiusOfOval:(float)radiusOfOval;
@@ -24,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)colorDidChange:(NSColorWell *)sender;
 - (IBAction)drawingTypeDidChange:(NSPopUpButton *)sender;
+- (IBAction)mouseInteractionTypeDidChange:(NSPopUpButton *)sender;
 - (IBAction)radiusOfOvalDidChange:(NSSlider *)sender;
 
 @end

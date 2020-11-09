@@ -25,9 +25,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) CGPoint topTrailingCorner;
 
 @property (nonatomic, readonly, weak) NSColor *color;
+@property (nonatomic, readonly) NSBezierPath *selectionView;
 @property (nonatomic, readonly) BOOL filled;
 
 - (BOOL)isInRect:(NSRect)rect;
+- (void)drawSelectionView;
 
 @end
 

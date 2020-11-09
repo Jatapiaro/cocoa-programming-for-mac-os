@@ -12,8 +12,9 @@
 
 @property (nonatomic, weak) IBOutlet NSColorWell *backgroundColorWell;
 @property (nonatomic, weak) IBOutlet NSColorWell *ovalColorWell;
-@property (nonatomic, weak) IBOutlet NSButton *drawingStyle;
+@property (nonatomic, weak) IBOutlet NSPopUpButton *drawingStyle;
 @property (nonatomic, weak) IBOutlet NSSlider *radiusOfOvalSlider;
+@property (nonatomic, weak) IBOutlet NSPopUpButton *mouseInteractionType;
 
 @end
 
@@ -34,6 +35,7 @@
     _ovalColor = ovalColor;
     _shouldFillOval = shouldFillOval;
     _radiusOfOval = radiusOfOval;
+    _isDrawing = YES;
 
     dispatch_async(dispatch_get_main_queue(), ^{
         self->_backgroundColorWell.color = backgroundColor;
@@ -61,6 +63,11 @@
 - (void)drawingTypeDidChange:(NSPopUpButton *)sender
 {
     _shouldFillOval = sender.selectedTag;
+}
+
+- (void)mouseInteractionTypeDidChange:(NSPopUpButton *)sender
+{
+    _isDrawing = sender.selectedTag;
 }
 
 - (void)radiusOfOvalDidChange:(NSSlider *)sender

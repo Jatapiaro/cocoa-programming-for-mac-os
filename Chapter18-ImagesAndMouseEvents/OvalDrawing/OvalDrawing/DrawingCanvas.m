@@ -17,6 +17,7 @@
 @implementation DrawingCanvas {
     NSMutableArray<Oval *> *_ovals;
     DrawingToolsPanelController *_drawingToolsPanelController;
+    Oval *_selectedOval;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -52,6 +53,11 @@
                 [oval fill];
             else
                 [oval stroke];
+
+            if (oval == _selectedOval) {
+                [NSColor.blackColor set];
+                [oval.selectionView stroke];
+            }
         }
     }
 }
@@ -61,7 +67,10 @@
 - (void)mouseDown:(NSEvent *)event
 {
     NSPoint mousePosition = event.locationInWindow;
-    [self _createOvalWithCenter:mousePosition];
+    if (_drawingToolsPanelController.isDrawing)
+        [self _createOvalWithCenter:mousePosition];
+    else
+        [self _selectOvalUsingPoint:mousePosition];
 }
 
 - (void)_createOvalWithCenter:(NSPoint)center
@@ -80,6 +89,21 @@
     [_ovals addObject:oval];
 
     self.needsDisplay = YES;
+}
+
+- (void)_selectOvalUsingPoint:(NSPoint)point
+{
+    NSPoint mousePosition = [_scrollView convertPoint:point toView:nil];
+    mousePosition = [_scrollView convertPoint:mousePosition toView:self];
+
+    for (Oval *oval in _ovals) {
+        if ([oval containsPoint:mousePosition]) {
+            [oval drawSelectionView];
+            _selectedOval = oval;
+            self.needsDisplay = YES;
+            return;
+        }
+    }
 }
 
 @end

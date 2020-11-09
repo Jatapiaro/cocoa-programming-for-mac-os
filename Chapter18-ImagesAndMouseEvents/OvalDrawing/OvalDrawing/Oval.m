@@ -82,4 +82,10 @@
     return NSMakePoint(self.xFinal, self.yFinal);
 }
 
+- (void)drawSelectionView
+{
+    _selectionView = [NSBezierPath bezierPathWithRect:_originRect];
+    NSLog(@"%@", _selectionView);
+}
+
 @end
