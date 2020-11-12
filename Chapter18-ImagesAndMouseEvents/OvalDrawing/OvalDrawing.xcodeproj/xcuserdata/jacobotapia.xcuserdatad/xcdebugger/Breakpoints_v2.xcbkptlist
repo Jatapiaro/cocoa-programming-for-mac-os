@@ -16,53 +16,5 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0E8B5F92-86F9-4EE7-9A2E-B1F593B68E29"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OvalDrawing/DrawingCanvas.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "-drawRect:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0E8B5F92-86F9-4EE7-9A2E-B1F593B68E29 - 489705493f07ccfd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DrawingCanvas drawRect:]"
-                  moduleName = "OvalDrawing"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jacobotapia/Documents/cocoa-programming-for-macos/Chapter18-ImagesAndMouseEvents/OvalDrawing/OvalDrawing/DrawingCanvas.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "324">
-               </Location>
-               <Location
-                  uuid = "0E8B5F92-86F9-4EE7-9A2E-B1F593B68E29 - 489705493f07ccfd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DrawingCanvas drawRect:]"
-                  moduleName = "OvalDrawing"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jacobotapia/Documents/cocoa-programming-for-macos/Chapter18-ImagesAndMouseEvents/OvalDrawing/OvalDrawing/DrawingCanvas.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "351">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
