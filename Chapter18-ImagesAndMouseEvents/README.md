@@ -7,7 +7,7 @@ Mouse events to move and resize and image. Add some scrolling
 This is pending.
 Document app that allows the user to:
 
-1. Draw ovals in arvitrary locations and sizes.
+1. Draw ovals in arbitrary locations and sizes.
 2. Save and read files.
 3. Add undo capabilities
 

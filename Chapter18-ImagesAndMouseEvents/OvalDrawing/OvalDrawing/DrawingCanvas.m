@@ -28,7 +28,11 @@
     _ovals = [NSMutableArray array];
     _drawingToolsPanelController = DrawingToolsPanelController.sharedDrawingToolsPanelController;
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_backgroundColorDidChange) name:@"BackgroundColorDidChange" object:_drawingToolsPanelController];
-
+    
+    NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:self.bounds options:NSTrackingMouseMoved | NSTrackingActiveInKeyWindow
+| NSTrackingActiveInActiveApp | NSTrackingInVisibleRect owner:self userInfo:nil];
+    [self addTrackingArea:trackingArea];
+    
     return self;
 }
 
@@ -56,7 +60,7 @@
 
             if (oval == _selectedOval) {
                 [NSColor.blackColor set];
-                [oval.selectionView stroke];
+                [oval.selectionPath stroke];
             }
         }
     }
@@ -73,10 +77,33 @@
         [self _selectOvalUsingPoint:mousePosition];
 }
 
+- (void)mouseDragged:(NSEvent *)event
+{
+    NSPoint finalPoint = [self _convertMousePositionUsingPoint:event.locationInWindow];
+    
+    if (_selectedOval) {
+        [_selectedOval updateOvalSizeUsingPoint:finalPoint];
+        self.needsDisplay = YES;
+        return;
+    }
+}
+
+- (void)mouseMoved:(NSEvent *)event
+{
+    if (!_selectedOval) {
+        [NSCursor.arrowCursor set];
+        return;
+    }
+    
+    NSPoint mousePosition = [self _convertMousePositionUsingPoint:event.locationInWindow];
+    [_selectedOval checkResizingAvailability:mousePosition];
+}
+
+// MARK: Oval Drawing
+
 - (void)_createOvalWithCenter:(NSPoint)center
 {
-    NSPoint mousePosition = [_scrollView convertPoint:center toView:nil];
-    mousePosition = [_scrollView convertPoint:mousePosition toView:self];
+    NSPoint mousePosition = [self _convertMousePositionUsingPoint:center];
 
     CGFloat radius = _drawingToolsPanelController.radiusOfOval;
     CGFloat diameter = radius * 2;
@@ -93,17 +120,32 @@
 
 - (void)_selectOvalUsingPoint:(NSPoint)point
 {
-    NSPoint mousePosition = [_scrollView convertPoint:point toView:nil];
-    mousePosition = [_scrollView convertPoint:mousePosition toView:self];
+    NSPoint mousePosition = [self _convertMousePositionUsingPoint:point];
 
     for (Oval *oval in _ovals) {
         if ([oval containsPoint:mousePosition]) {
-            [oval drawSelectionView];
-            _selectedOval = oval;
+            [self _setSelectedOval:oval];
             self.needsDisplay = YES;
             return;
         }
     }
+}
+
+- (void)_setSelectedOval:(Oval *)oval
+{
+    if (_selectedOval)
+        [_selectedOval removeSelectionPath];
+    
+    _selectedOval = oval;
+    [_selectedOval addSelectionPath];
+}
+
+- (NSPoint)_convertMousePositionUsingPoint:(NSPoint)point
+{
+    NSPoint mousePosition = [_scrollView convertPoint:point toView:nil];
+    mousePosition = [_scrollView convertPoint:mousePosition toView:self];
+    
+    return mousePosition;
 }
 
 @end
