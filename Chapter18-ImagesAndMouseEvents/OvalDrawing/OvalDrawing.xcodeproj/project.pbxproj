@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A6B1AB425A1B70200033A59 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B1AB325A1B70200033A59 /* AppDefaults.m */; };
 		C03D65B12544DECD00AA21C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65B02544DECD00AA21C8 /* AppDelegate.m */; };
 		C03D65B42544DECD00AA21C8 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65B32544DECD00AA21C8 /* Document.m */; };
 		C03D65B72544DECD00AA21C8 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03D65B52544DECD00AA21C8 /* Document.xib */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A6B1AB225A1B70200033A59 /* AppDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDefaults.h; sourceTree = "<group>"; };
+		0A6B1AB325A1B70200033A59 /* AppDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDefaults.m; sourceTree = "<group>"; };
 		C03D65AC2544DECD00AA21C8 /* OvalDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OvalDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C03D65AF2544DECD00AA21C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C03D65B02544DECD00AA21C8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 				C03D65D4254E889100AA21C8 /* AppController.m */,
 				C03D65D6254EA52300AA21C8 /* DrawingDocumentWindowController.h */,
 				C03D65D7254EA52300AA21C8 /* DrawingDocumentWindowController.m */,
+				0A6B1AB225A1B70200033A59 /* AppDefaults.h */,
+				0A6B1AB325A1B70200033A59 /* AppDefaults.m */,
 			);
 			path = OvalDrawing;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				C03D65D5254E889100AA21C8 /* AppController.m in Sources */,
 				C03D65C82544DF5200AA21C8 /* DrawingCanvas.m in Sources */,
 				C03D65B12544DECD00AA21C8 /* AppDelegate.m in Sources */,
+				0A6B1AB425A1B70200033A59 /* AppDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

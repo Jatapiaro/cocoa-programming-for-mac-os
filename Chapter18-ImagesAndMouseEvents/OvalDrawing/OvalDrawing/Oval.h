@@ -10,9 +10,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, OvalTransformType) {
+    OvalTraslationNone,
+    OvalResizingTop,
+    OvalResizingTrailing,
+    OvalResizingBottom,
+    OvalResizingLeading,
+    OvalTraslation,
+};
+
 @interface Oval : NSBezierPath
 
 - (instancetype)initWithRect:(NSRect)rect color:(NSColor *)color filled:(BOOL)filled;
+
+@property (readonly) NSRect originRect;
 
 // MARK: Points of Rect as Floats
 @property (nonatomic, readonly) CGFloat xOrigin;
@@ -26,9 +37,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) CGPoint topLeadingCorner;
 @property (nonatomic, readonly) CGPoint topTrailingCorner;
 
-@property (nonatomic, readonly, weak) NSColor *color;
+@property (nonatomic) NSColor *color;
 @property (nonatomic, readonly) NSBezierPath *selectionPath;
-@property (nonatomic, readonly) BOOL filled;
+@property (nonatomic) BOOL filled;
+@property (nonatomic, readonly, getter=isTraslating) BOOL traslating;
+@property (nonatomic, readonly, getter=isRezising) BOOL resizing;
 
 - (BOOL)isInRect:(NSRect)rect;
 - (void)addSelectionPath;

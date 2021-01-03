@@ -22,8 +22,9 @@
     DrawingToolsPanelController *drawingToolsPanelController = DrawingToolsPanelController.sharedDrawingToolsPanelController;
     [drawingToolsPanelController updateBackgroundColor:NSColor.whiteColor ovalColor:NSColor.blackColor shouldFillOval:NO radiusOfOval:10];
 
-    if (!drawingToolsPanelController.window.isVisible)
+    if (!drawingToolsPanelController.window.isVisible) {
         [drawingToolsPanelController showWindow:nil];
+    }
 }
 
 @end

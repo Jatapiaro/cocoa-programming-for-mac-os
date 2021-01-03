@@ -8,17 +8,23 @@
 
 #import "DrawingToolsPanelController.h"
 
+#import "AppDefaults.h"
+
 @interface DrawingToolsPanelController ()
 
 @property (nonatomic, weak) IBOutlet NSColorWell *backgroundColorWell;
 @property (nonatomic, weak) IBOutlet NSColorWell *ovalColorWell;
-@property (nonatomic, weak) IBOutlet NSPopUpButton *drawingStyle;
+@property (nonatomic, weak) IBOutlet NSSegmentedControl *drawingStyle;
 @property (nonatomic, weak) IBOutlet NSSlider *radiusOfOvalSlider;
-@property (nonatomic, weak) IBOutlet NSPopUpButton *mouseInteractionType;
+@property (nonatomic, weak) IBOutlet NSSegmentedControl *mouseInteractionType;
 
 @end
 
-@implementation DrawingToolsPanelController
+@implementation DrawingToolsPanelController {
+    NSColor *_currentOvalColor;
+    BOOL _currentOvalDrawingStyle;
+    float _currentOvalRadius;
+}
 
 + (DrawingToolsPanelController *)sharedDrawingToolsPanelController
 {
@@ -50,6 +56,7 @@
 {
     if (sender == _ovalColorWell) {
         _ovalColor = sender.color;
+        [NSNotificationCenter.defaultCenter postNotificationName:OvalDrawingOvalColorDidChangeNotificationKey object:self];
         return;
     }
 
@@ -57,22 +64,48 @@
         return;
 
     _backgroundColor = sender.color;
-    [NSNotificationCenter.defaultCenter postNotificationName:@"BackgroundColorDidChange" object:self];
+    [NSNotificationCenter.defaultCenter postNotificationName:OvalDrawingBackgroundColorDidChangeNotificationKey object:self];
 }
 
 - (void)drawingTypeDidChange:(NSPopUpButton *)sender
 {
     _shouldFillOval = sender.selectedTag;
+    [NSNotificationCenter.defaultCenter postNotificationName:OvalDrawingOvalDrawingStyleDidChangeNotificationKey object:self];
 }
 
 - (void)mouseInteractionTypeDidChange:(NSPopUpButton *)sender
 {
     _isDrawing = sender.selectedTag;
+    [NSNotificationCenter.defaultCenter postNotificationName:OvalDrawingMouseInteractionDidChangeNotificationKey object:self];
 }
 
 - (void)radiusOfOvalDidChange:(NSSlider *)sender
 {
     _radiusOfOval = sender.floatValue;
+    [NSNotificationCenter.defaultCenter postNotificationName:OvalDrawingOvalRadiusDidChangeNotificationKey object:self];
+}
+
+- (void)storeOvalSettingsAndLoadOvalPropertiesUsingOval:(Oval *)oval
+{
+    // Stores current settings
+    if (!_currentOvalColor) {
+        _currentOvalColor = _ovalColor;
+        _currentOvalDrawingStyle = _shouldFillOval;
+    }
+
+    // Load oval properties
+    _ovalColorWell.color = oval.color;
+    [_drawingStyle selectSegmentWithTag:oval.filled];
+}
+
+- (void)restoreGeneralOvalProperties
+{
+    if (_currentOvalColor) {
+        _ovalColorWell.color = _currentOvalColor;
+        _currentOvalColor = nil;
+
+        [_drawingStyle selectSegmentWithTag:_currentOvalDrawingStyle];
+    }
 }
 
 @end

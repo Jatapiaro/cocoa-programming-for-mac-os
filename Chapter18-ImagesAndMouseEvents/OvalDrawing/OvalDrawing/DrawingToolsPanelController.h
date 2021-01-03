@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Oval.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,9 +25,14 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: Actions
 
 - (IBAction)colorDidChange:(NSColorWell *)sender;
-- (IBAction)drawingTypeDidChange:(NSPopUpButton *)sender;
-- (IBAction)mouseInteractionTypeDidChange:(NSPopUpButton *)sender;
+- (IBAction)drawingTypeDidChange:(NSSegmentedControl *)sender;
+- (IBAction)mouseInteractionTypeDidChange:(NSSegmentedControl *)sender;
 - (IBAction)radiusOfOvalDidChange:(NSSlider *)sender;
+
+// MARK: Helper Methods
+
+- (void)storeOvalSettingsAndLoadOvalPropertiesUsingOval:(Oval *)oval;
+- (void)restoreGeneralOvalProperties;
 
 @end
 

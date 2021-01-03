@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="DrawingToolsPanelController">
             <connections>
                 <outlet property="backgroundColorWell" destination="BSn-JE-pSB" id="mDT-p1-tDO"/>
-                <outlet property="drawingStyle" destination="tWc-06-c7H" id="e6w-ZO-zEB"/>
-                <outlet property="mouseInteractionType" destination="8x4-03-rte" id="iN5-sJ-A9V"/>
+                <outlet property="drawingStyle" destination="e2Y-xW-yj2" id="gF1-C6-OZ9"/>
+                <outlet property="mouseInteractionType" destination="Iz6-Ah-IBU" id="Lic-7r-CiA"/>
                 <outlet property="ovalColorWell" destination="mUT-6l-ZUL" id="Zmn-Bl-oIs"/>
                 <outlet property="radiusOfOvalSlider" destination="uIK-21-nOv" id="0Rb-RG-5I6"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="dez-Um-dK1"/>
@@ -21,7 +21,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="265" height="231"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="265" height="231"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -63,53 +63,39 @@
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uIK-21-nOv">
                         <rect key="frame" x="18" y="19" width="229" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" state="on" alignment="left" minValue="10" maxValue="100" doubleValue="10" tickMarkPosition="below" numberOfTickMarks="10" sliderType="linear" id="e6L-w8-iwa"/>
+                        <sliderCell key="cell" state="on" alignment="left" minValue="20" maxValue="100" doubleValue="20" tickMarkPosition="below" numberOfTickMarks="10" sliderType="linear" id="e6L-w8-iwa"/>
                         <connections>
                             <action selector="radiusOfOvalDidChange:" target="-2" id="OSg-su-V6n"/>
                         </connections>
                     </slider>
-                    <popUpButton verticalHuggingPriority="750" id="8x4-03-rte">
-                        <rect key="frame" x="18" y="186" width="230" height="26"/>
+                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iz6-Ah-IBU">
+                        <rect key="frame" x="19" y="188" width="227" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <popUpButtonCell key="cell" type="push" title="Drawing" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="iyM-RG-THA" id="MRw-lQ-njR">
-                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Hkn-9c-Boh">
                             <font key="font" metaFont="system"/>
-                            <menu key="menu" id="Dmw-za-VRE">
-                                <items>
-                                    <menuItem title="Selecting" id="RJk-oj-VzS">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Drawing" state="on" tag="1" id="iyM-RG-THA">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                </items>
-                            </menu>
-                        </popUpButtonCell>
+                            <segments>
+                                <segment label="Drawing" width="151" selected="YES"/>
+                                <segment label="Selecting"/>
+                            </segments>
+                        </segmentedCell>
                         <connections>
-                            <action selector="mouseInteractionTypeDidChange:" target="-2" id="9Eh-c6-C70"/>
+                            <action selector="mouseInteractionTypeDidChange:" target="-2" id="jsV-Ax-x7p"/>
                         </connections>
-                    </popUpButton>
-                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tWc-06-c7H">
-                        <rect key="frame" x="18" y="60" width="230" height="25"/>
+                    </segmentedControl>
+                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e2Y-xW-yj2">
+                        <rect key="frame" x="18" y="61" width="228" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <popUpButtonCell key="cell" type="push" title="Stroke Oval" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="k7Z-br-TQx" id="kmw-TW-Tc6">
-                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="gnJ-rM-ISF">
                             <font key="font" metaFont="system"/>
-                            <menu key="menu" id="j1G-tN-OnT">
-                                <items>
-                                    <menuItem title="Stroke Oval" state="on" id="k7Z-br-TQx">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Fill Oval" tag="1" id="MMS-rD-Js8">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                </items>
-                            </menu>
-                        </popUpButtonCell>
+                            <segments>
+                                <segment label="Stroke Oval" width="110" selected="YES"/>
+                                <segment label="Fill Oval" width="109" tag="1"/>
+                            </segments>
+                        </segmentedCell>
                         <connections>
-                            <action selector="drawingTypeDidChange:" target="-2" id="iBA-vx-GG1"/>
+                            <action selector="drawingTypeDidChange:" target="-2" id="03m-Wv-9ls"/>
                         </connections>
-                    </popUpButton>
+                    </segmentedControl>
                 </subviews>
             </view>
             <point key="canvasLocation" x="31.5" y="73.5"/>

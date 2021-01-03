@@ -9,6 +9,7 @@
 #import "DrawingCanvas.h"
 #import "Oval.h"
 #import "DrawingToolsPanelController.h"
+#import "AppDefaults.h"
 
 @interface DrawingCanvas ()
 @property (nonatomic, weak) IBOutlet NSScrollView *scrollView;
@@ -18,6 +19,7 @@
     NSMutableArray<Oval *> *_ovals;
     DrawingToolsPanelController *_drawingToolsPanelController;
     Oval *_selectedOval;
+    NSRect _selectedOvalOriginRect;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -27,7 +29,13 @@
 
     _ovals = [NSMutableArray array];
     _drawingToolsPanelController = DrawingToolsPanelController.sharedDrawingToolsPanelController;
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_backgroundColorDidChange) name:@"BackgroundColorDidChange" object:_drawingToolsPanelController];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_backgroundColorDidChange) name:OvalDrawingBackgroundColorDidChangeNotificationKey object:_drawingToolsPanelController];
+
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_ovalColorDidChange) name:OvalDrawingOvalColorDidChangeNotificationKey object:_drawingToolsPanelController];
+
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_ovalDrawingStyleDidChange) name:OvalDrawingOvalDrawingStyleDidChangeNotificationKey object:_drawingToolsPanelController];
+
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_mouseInteractionDidChange) name:OvalDrawingMouseInteractionDidChangeNotificationKey object:_drawingToolsPanelController];
     
     NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:self.bounds options:NSTrackingMouseMoved | NSTrackingActiveInKeyWindow
 | NSTrackingActiveInActiveApp | NSTrackingInVisibleRect owner:self userInfo:nil];
@@ -40,6 +48,32 @@
 {
     if (self.window.isMainWindow)
         self.needsDisplay = YES;
+}
+
+- (void)_ovalColorDidChange
+{
+    if (!_selectedOval)
+        return;
+
+    _selectedOval.color = [_drawingToolsPanelController.ovalColor copy];
+    self.needsDisplay = YES;
+}
+
+- (void)_ovalDrawingStyleDidChange
+{
+    if (!_selectedOval)
+        return;
+
+    _selectedOval.filled = _drawingToolsPanelController.shouldFillOval;
+    self.needsDisplay = YES;
+}
+
+- (void)_mouseInteractionDidChange
+{
+    if (!_selectedOval)
+        return;
+
+    [self _unselectSelectedOval];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -82,6 +116,9 @@
     NSPoint finalPoint = [self _convertMousePositionUsingPoint:event.locationInWindow];
     
     if (_selectedOval) {
+        if (NSIsEmptyRect(_selectedOvalOriginRect))
+            _selectedOvalOriginRect = _selectedOval.originRect;
+
         [_selectedOval updateOvalSizeUsingPoint:finalPoint];
         self.needsDisplay = YES;
         return;
@@ -97,6 +134,17 @@
     
     NSPoint mousePosition = [self _convertMousePositionUsingPoint:event.locationInWindow];
     [_selectedOval checkResizingAvailability:mousePosition];
+}
+
+- (void)mouseUp:(NSEvent *)event
+{
+    if (NSIsEmptyRect(_selectedOvalOriginRect))
+        return;
+
+    if (_selectedOval.isTraslating)
+        [NSCursor.openHandCursor set];
+
+    _selectedOvalOriginRect = NSZeroRect;
 }
 
 // MARK: Oval Drawing
@@ -125,10 +173,22 @@
     for (Oval *oval in _ovals) {
         if ([oval containsPoint:mousePosition]) {
             [self _setSelectedOval:oval];
+            [_drawingToolsPanelController storeOvalSettingsAndLoadOvalPropertiesUsingOval:oval];
             self.needsDisplay = YES;
             return;
         }
     }
+
+    if (_selectedOval && !_selectedOval.isRezising)
+        [self _unselectSelectedOval];
+}
+
+- (void)_unselectSelectedOval
+{
+    [_selectedOval removeSelectionPath];
+    _selectedOval = nil;
+    [_drawingToolsPanelController restoreGeneralOvalProperties];
+    self.needsDisplay = YES;
 }
 
 - (void)_setSelectedOval:(Oval *)oval

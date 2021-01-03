@@ -8,6 +8,8 @@
 
 #import "Oval.h"
 
+const CGFloat minOvalSize = 20;
+
 @interface Oval ()
 @property (nonatomic) NSRect topResizeReferenceRect;
 @property (nonatomic) NSRect bottomResizeReferenceRect;
@@ -16,7 +18,7 @@
 @end
 
 @implementation Oval {
-    NSRect _originRect;
+    OvalTransformType _traslationType;
 }
 
 - (instancetype)initWithRect:(NSRect)rect color:(NSColor *)color filled:(BOOL)filled
@@ -28,7 +30,7 @@
     [self _calculateResizingReferenceRects];
     _color = color;
     _filled = filled;
-    [super appendBezierPathWithOvalInRect:rect];
+    [super appendBezierPathWithOvalInRect:_originRect];
 
     return self;
 }
@@ -116,26 +118,61 @@
 
 - (void)updateOvalSizeUsingPoint:(NSPoint)point
 {
+    if (!_selectionPath)
+        return;
+    
     NSRect newOriginRect = _originRect;
     
-    if (point.y > self.yFinal) {
+    if (_traslationType == OvalResizingTop) {
         CGFloat height = point.y - self.yOrigin;
-        newOriginRect = NSMakeRect(self.xOrigin, self.yOrigin, self._width, height);
+        if (self._height == minOvalSize && height < minOvalSize)
+            return;
+
+        newOriginRect = NSMakeRect(self.xOrigin, self.yOrigin, self._width, height >= minOvalSize ? height : minOvalSize);
     }
     
-    if (point.y < self.yOrigin) {
+    if (_traslationType == OvalResizingBottom) {
         CGFloat height = self.yFinal - point.y;
-        newOriginRect = NSMakeRect(self.xOrigin, point.y, self._width, height);
+        if (self._height == minOvalSize && height < minOvalSize)
+            return;
+
+        CGFloat yOrigin = point.y;
+        if (height < minOvalSize) {
+            height = minOvalSize;
+            yOrigin = self.yOrigin;
+        }
+
+        newOriginRect = NSMakeRect(self.xOrigin, yOrigin, self._width, height);
     }
     
-    if (point.x > self.xFinal) {
+    if (_traslationType == OvalResizingTrailing) {
         CGFloat width = point.x - self.xOrigin;
-        newOriginRect = NSMakeRect(self.xOrigin, self.yOrigin, width, self._height);
+        if (self._width == minOvalSize && width < minOvalSize)
+            return;
+
+        newOriginRect = NSMakeRect(self.xOrigin, self.yOrigin, width >= minOvalSize ? width : minOvalSize, self._height);
     }
-    
-    if (point.x < self.xOrigin) {
+
+    if (_traslationType == OvalResizingLeading) {
         CGFloat width = self.xFinal - point.x;
-        newOriginRect = NSMakeRect(point.x, self.yOrigin, width, self._height);
+        if (self._width == minOvalSize && width < minOvalSize)
+            return;
+
+        CGFloat xOrigin = point.x;
+        if (width < minOvalSize) {
+            width = minOvalSize;
+            xOrigin = self.xOrigin;
+        }
+
+        newOriginRect = NSMakeRect(xOrigin, self.yOrigin, width, self._height);
+    }
+
+    if (_traslationType == OvalTraslation) {
+        [NSCursor.closedHandCursor set];
+        CGFloat xOrigin = point.x - (self._width / 2);
+        CGFloat yOrigin = point.y - (self._height / 2);
+
+        newOriginRect = NSMakeRect(xOrigin, yOrigin, self._width, self._height);
     }
     
     [self removeAllPoints];
@@ -170,30 +207,53 @@
 
 - (void)checkResizingAvailability:(NSPoint)point
 {
-    if (!_selectionPath)
+    if (!_selectionPath) {
+        _traslationType = OvalTraslationNone;
         return;
+    }
     
     if (NSPointInRect(point, _topResizeReferenceRect)) {
+        _traslationType = OvalResizingTop;
         [NSCursor.resizeUpDownCursor set];
         return;
     }
     
     if (NSPointInRect(point, _bottomResizeReferenceRect)) {
-        [NSCursor.resizeDownCursor set];
+        _traslationType = OvalResizingBottom;
+        [NSCursor.resizeUpDownCursor set];
         return;
     }
     
     if (NSPointInRect(point, _leadingResizeReferenceRect)) {
-        [NSCursor.resizeLeftCursor set];
+        _traslationType = OvalResizingLeading;
+        [NSCursor.resizeLeftRightCursor set];
         return;
     }
     
     if (NSPointInRect(point, _trailingResizeReferenceRect)) {
-        [NSCursor.resizeRightCursor set];
+        _traslationType = OvalResizingTrailing;
+        [NSCursor.resizeLeftRightCursor set];
+        return;
+    }
+
+    if (NSPointInRect(point, _originRect)) {
+        _traslationType = OvalTraslation;
+        [NSCursor.openHandCursor set];
         return;
     }
     
+    _traslationType = OvalTraslationNone;
     [NSCursor.arrowCursor set];
+}
+
+- (BOOL)isTraslating
+{
+    return _traslationType == OvalTraslation;
+}
+
+- (BOOL)isRezising
+{
+    return _traslationType != OvalTraslation && _traslationType != OvalTraslationNone;
 }
 
 @end
