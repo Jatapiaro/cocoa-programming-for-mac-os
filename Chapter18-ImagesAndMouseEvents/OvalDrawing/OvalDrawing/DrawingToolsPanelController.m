@@ -23,7 +23,6 @@
 @implementation DrawingToolsPanelController {
     NSColor *_currentOvalColor;
     BOOL _currentOvalDrawingStyle;
-    float _currentOvalRadius;
 }
 
 + (DrawingToolsPanelController *)sharedDrawingToolsPanelController
@@ -35,19 +34,28 @@
     return sharedDrawingToolsPanelController;
 }
 
-- (void)updateBackgroundColor:(NSColor *)backgroundColor ovalColor:(NSColor *)ovalColor shouldFillOval:(BOOL)shouldFillOval radiusOfOval:(float)radiusOfOval
+- (void)updateBackgroundColor:(NSColor *)backgroundColor ovalColor:(NSColor *)ovalColor shouldFillOval:(BOOL)shouldFillOval radiusOfOval:(float)radiusOfOval isDrawing:(BOOL)isDrawing
 {
     _backgroundColor = backgroundColor;
     _ovalColor = ovalColor;
     _shouldFillOval = shouldFillOval;
     _radiusOfOval = radiusOfOval;
-    _isDrawing = YES;
+    _isDrawing = isDrawing;
 
     dispatch_async(dispatch_get_main_queue(), ^{
         self->_backgroundColorWell.color = backgroundColor;
         self->_ovalColorWell.color = ovalColor;
         self->_radiusOfOvalSlider.floatValue = radiusOfOval;
+        [self->_drawingStyle setSelectedSegment:shouldFillOval];
+        [self->_mouseInteractionType setSelectedSegment:!isDrawing];
     });
+}
+
+- (void)awakeFromNib
+{
+    _ovalColorWell.continuous = NO;
+    _backgroundColorWell.continuous = NO;
+    NSColorPanel.sharedColorPanel.continuous = NO;
 }
 
 // MARK: Actions
@@ -67,15 +75,15 @@
     [NSNotificationCenter.defaultCenter postNotificationName:OvalDrawingBackgroundColorDidChangeNotificationKey object:self];
 }
 
-- (void)drawingTypeDidChange:(NSPopUpButton *)sender
+- (void)drawingTypeDidChange:(NSSegmentedControl *)sender
 {
     _shouldFillOval = sender.selectedTag;
     [NSNotificationCenter.defaultCenter postNotificationName:OvalDrawingOvalDrawingStyleDidChangeNotificationKey object:self];
 }
 
-- (void)mouseInteractionTypeDidChange:(NSPopUpButton *)sender
+- (void)mouseInteractionTypeDidChange:(NSSegmentedControl *)sender
 {
-    _isDrawing = sender.selectedTag;
+    _isDrawing = !sender.selectedSegment;
     [NSNotificationCenter.defaultCenter postNotificationName:OvalDrawingMouseInteractionDidChangeNotificationKey object:self];
 }
 

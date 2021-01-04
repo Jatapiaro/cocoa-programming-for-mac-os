@@ -21,18 +21,26 @@ const CGFloat minOvalSize = 20;
     OvalTransformType _traslationType;
 }
 
-- (instancetype)initWithRect:(NSRect)rect color:(NSColor *)color filled:(BOOL)filled
+- (instancetype)initWithCenter:(NSPoint)center rect:(NSRect)rect color:(NSColor *)color filled:(BOOL)filled
 {
     if (!(self = [super init]))
         return nil;
 
     _originRect = rect;
+    _center = center;
     [self _calculateResizingReferenceRects];
     _color = color;
     _filled = filled;
     [super appendBezierPathWithOvalInRect:_originRect];
 
     return self;
+}
+
+- (void)setOriginRect:(NSRect)originRect
+{
+    [self removeAllPoints];
+    [self _updateOvalSizeWithRect:originRect];
+    [self appendBezierPathWithOvalInRect:_originRect];
 }
 
 // MARK: Points of Rect as Floats

@@ -10,6 +10,7 @@
 #import "Oval.h"
 #import "DrawingToolsPanelController.h"
 #import "AppDefaults.h"
+#import "Document.h"
 
 @interface DrawingCanvas ()
 @property (nonatomic, weak) IBOutlet NSScrollView *scrollView;
@@ -20,6 +21,8 @@
     DrawingToolsPanelController *_drawingToolsPanelController;
     Oval *_selectedOval;
     NSRect _selectedOvalOriginRect;
+    NSUndoManager *_undoManager;
+    BOOL _isCreatingOval;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -29,6 +32,7 @@
 
     _ovals = [NSMutableArray array];
     _drawingToolsPanelController = DrawingToolsPanelController.sharedDrawingToolsPanelController;
+
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_backgroundColorDidChange) name:OvalDrawingBackgroundColorDidChangeNotificationKey object:_drawingToolsPanelController];
 
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_ovalColorDidChange) name:OvalDrawingOvalColorDidChangeNotificationKey object:_drawingToolsPanelController];
@@ -44,6 +48,12 @@
     return self;
 }
 
+- (void)awakeFromNib
+{
+    Document *document = self.window.windowController.document;
+    _undoManager = document.undoManager;
+}
+
 - (void)_backgroundColorDidChange
 {
     if (self.window.isMainWindow)
@@ -55,7 +65,16 @@
     if (!_selectedOval)
         return;
 
-    _selectedOval.color = [_drawingToolsPanelController.ovalColor copy];
+    [self _changeColorOfOval:_selectedOval withNewColor:[_drawingToolsPanelController.ovalColor copy]];
+}
+
+- (void)_changeColorOfOval:(Oval *)oval withNewColor:(NSColor *)color
+{
+    [self _prepareUndoManager];
+    [[_undoManager prepareWithInvocationTarget:self] _changeColorOfOval:oval withNewColor:[oval.color copy]];
+    [self _addUndoManagerActionName:@"Change Color Of Oval"];
+
+    oval.color = color;
     self.needsDisplay = YES;
 }
 
@@ -144,13 +163,31 @@
     if (_selectedOval.isTraslating)
         [NSCursor.openHandCursor set];
 
+    [self _prepareUndoManager];
+    [[_undoManager prepareWithInvocationTarget:self] _translateOval:_selectedOval usingRect:_selectedOvalOriginRect];
+    [self _addUndoManagerActionName:@"Change Position Of Oval"];
+
     _selectedOvalOriginRect = NSZeroRect;
+}
+
+- (void)_translateOval:(Oval *)oval usingRect:(NSRect)rect
+{
+    [self _prepareUndoManager];
+    [[_undoManager prepareWithInvocationTarget:self] _translateOval:oval usingRect:oval.originRect];
+    [self _addUndoManagerActionName:@"Change Position Of Oval"];
+
+    oval.originRect = rect;
+    self.needsDisplay = YES;
 }
 
 // MARK: Oval Drawing
 
 - (void)_createOvalWithCenter:(NSPoint)center
 {
+    if (_isCreatingOval)
+        return;
+
+    _isCreatingOval = YES;
     NSPoint mousePosition = [self _convertMousePositionUsingPoint:center];
 
     CGFloat radius = _drawingToolsPanelController.radiusOfOval;
@@ -160,9 +197,24 @@
     NSColor *colorOfOval = _drawingToolsPanelController.ovalColor;
     BOOL shouldFillOval = _drawingToolsPanelController.shouldFillOval;
 
-    Oval *oval = [[Oval alloc] initWithRect:rect color:colorOfOval filled:shouldFillOval];
+    Oval *oval = [[Oval alloc] initWithCenter:center rect:rect color:colorOfOval filled:shouldFillOval];
     [_ovals addObject:oval];
 
+    self.needsDisplay = YES;
+    _isCreatingOval = NO;
+
+    [self _prepareUndoManager];
+    [[_undoManager prepareWithInvocationTarget:self] _removeOval:oval];
+    [self _addUndoManagerActionName:@"Remove Oval"];
+}
+
+- (void)_removeOval:(Oval *)oval
+{
+    [self _prepareUndoManager];
+    [[_undoManager prepareWithInvocationTarget:self] _createOvalWithCenter:oval.center];
+    [self _addUndoManagerActionName:@"Re-add Oval"];
+
+    [_ovals removeObject:oval];
     self.needsDisplay = YES;
 }
 
@@ -206,6 +258,22 @@
     mousePosition = [_scrollView convertPoint:mousePosition toView:self];
     
     return mousePosition;
+}
+
+// MARK: UndoManager commons
+
+- (void)_prepareUndoManager
+{
+    if (_undoManager.groupingLevel > 0) {
+        [_undoManager endUndoGrouping];
+        [_undoManager beginUndoGrouping];
+    }
+}
+
+- (void)_addUndoManagerActionName:(NSString *)actionName
+{
+    if (!_undoManager.isUndoing || !_undoManager.isRedoing)
+        [_undoManager setActionName:actionName];
 }
 
 @end

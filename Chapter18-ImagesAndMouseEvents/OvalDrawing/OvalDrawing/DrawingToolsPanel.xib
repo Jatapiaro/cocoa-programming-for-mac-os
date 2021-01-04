@@ -18,7 +18,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Drawing Tools" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="265" height="231"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
@@ -75,7 +75,7 @@
                             <font key="font" metaFont="system"/>
                             <segments>
                                 <segment label="Drawing" width="151" selected="YES"/>
-                                <segment label="Selecting"/>
+                                <segment label="Selecting" tag="1"/>
                             </segments>
                         </segmentedCell>
                         <connections>

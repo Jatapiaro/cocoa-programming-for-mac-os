@@ -21,9 +21,9 @@ typedef NS_ENUM(NSInteger, OvalTransformType) {
 
 @interface Oval : NSBezierPath
 
-- (instancetype)initWithRect:(NSRect)rect color:(NSColor *)color filled:(BOOL)filled;
+- (instancetype)initWithCenter:(NSPoint)center rect:(NSRect)rect color:(NSColor *)color filled:(BOOL)filled;
 
-@property (readonly) NSRect originRect;
+@property (nonatomic) NSRect originRect;
 
 // MARK: Points of Rect as Floats
 @property (nonatomic, readonly) CGFloat xOrigin;
@@ -36,6 +36,7 @@ typedef NS_ENUM(NSInteger, OvalTransformType) {
 @property (nonatomic, readonly) CGPoint bottomTrailingCorner;
 @property (nonatomic, readonly) CGPoint topLeadingCorner;
 @property (nonatomic, readonly) CGPoint topTrailingCorner;
+@property (nonatomic, readonly) NSPoint center;
 
 @property (nonatomic) NSColor *color;
 @property (nonatomic, readonly) NSBezierPath *selectionPath;

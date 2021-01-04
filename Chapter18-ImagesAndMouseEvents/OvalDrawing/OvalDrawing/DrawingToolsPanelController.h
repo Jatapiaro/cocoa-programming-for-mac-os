@@ -17,10 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, readonly) NSColor *ovalColor;
 @property (nonatomic, readonly) BOOL shouldFillOval;
 @property (nonatomic, readonly) float radiusOfOval;
-@property (nonatomic, readonly) BOOL isDrawing;
+@property (readonly) BOOL isDrawing;
+
+@property (weak) NSWindow *currentOwner;
 
 + (DrawingToolsPanelController *)sharedDrawingToolsPanelController;
-- (void)updateBackgroundColor:(NSColor *)backgroundColor ovalColor:(NSColor *)ovalColor shouldFillOval:(BOOL)shouldFillOval radiusOfOval:(float)radiusOfOval;
+- (void)updateBackgroundColor:(NSColor *)backgroundColor ovalColor:(NSColor *)ovalColor shouldFillOval:(BOOL)shouldFillOval radiusOfOval:(float)radiusOfOval isDrawing:(BOOL)isDrawing;
 
 // MARK: Actions
 
