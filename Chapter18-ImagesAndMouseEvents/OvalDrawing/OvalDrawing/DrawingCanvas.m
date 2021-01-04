@@ -23,6 +23,7 @@
     NSRect _selectedOvalOriginRect;
     NSUndoManager *_undoManager;
     BOOL _isCreatingOval;
+    NSColor *_backgroundColor;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -32,6 +33,7 @@
 
     _ovals = [NSMutableArray array];
     _drawingToolsPanelController = DrawingToolsPanelController.sharedDrawingToolsPanelController;
+    _backgroundColor = NSColor.whiteColor;
 
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_backgroundColorDidChange) name:OvalDrawingBackgroundColorDidChangeNotificationKey object:_drawingToolsPanelController];
 
@@ -57,7 +59,17 @@
 - (void)_backgroundColorDidChange
 {
     if (self.window.isMainWindow)
-        self.needsDisplay = YES;
+        [self _changeBackgroundColorOfCanvas:_drawingToolsPanelController.backgroundColor];
+}
+
+- (void)_changeBackgroundColorOfCanvas:(NSColor *)color
+{
+    [self _prepareUndoManager];
+    [[_undoManager prepareWithInvocationTarget:self] _changeBackgroundColorOfCanvas:_backgroundColor];
+    [self _addUndoManagerActionName:@"Change Color Of Canvas"];
+
+    _backgroundColor = color;
+    self.needsDisplay = YES;
 }
 
 - (void)_ovalColorDidChange
@@ -99,7 +111,7 @@
 {
     [super drawRect:dirtyRect];
 
-    [_drawingToolsPanelController.backgroundColor set];
+    [_backgroundColor set];
     [NSBezierPath fillRect:self.bounds];
 
     for (Oval *oval in _ovals) {
