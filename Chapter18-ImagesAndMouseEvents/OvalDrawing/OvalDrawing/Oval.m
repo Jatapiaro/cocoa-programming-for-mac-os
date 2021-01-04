@@ -36,6 +36,36 @@ const CGFloat minOvalSize = 20;
     return self;
 }
 
+// MARK: Encoding
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    if (!(self = [super initWithCoder:coder]))
+        return nil;
+
+    NSRect rect = [coder decodeRectForKey:@"originRect"];
+    NSPoint center = [coder decodePointForKey:@"center"];
+    NSColor *color = [coder decodeObjectOfClass:NSColor.class forKey:@"color"];
+    BOOL filled = [coder decodeBoolForKey:@"filled"];
+
+    return [self initWithCenter:center rect:rect color:color filled:filled];
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [coder encodeRect:_originRect forKey:@"originRect"];
+    [coder encodePoint:_center forKey:@"center"];
+    [coder encodeObject:_color forKey:@"color"];
+    [coder encodeBool:_filled forKey:@"filled"];
+}
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
+// MARK: Other
+
 - (void)setOriginRect:(NSRect)originRect
 {
     [self removeAllPoints];

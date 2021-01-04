@@ -11,9 +11,10 @@
 #import "DrawingToolsPanelController.h"
 #import "AppDefaults.h"
 #import "Document.h"
+#import "DrawingCanvasEncoderObject.h"
 
 @interface DrawingCanvas ()
-@property (nonatomic, weak) IBOutlet NSScrollView *scrollView;
+@property IBOutlet NSScrollView *scrollView;
 @end
 
 @implementation DrawingCanvas {
@@ -54,6 +55,13 @@
 {
     Document *document = self.window.windowController.document;
     _undoManager = document.undoManager;
+    document.drawingCanvas = self;
+}
+
+- (void)setOvals:(NSMutableArray<Oval *> *)ovals
+{
+    _ovals = ovals;
+    self.needsDisplay = YES;
 }
 
 - (void)_backgroundColorDidChange
@@ -286,6 +294,20 @@
 {
     if (!_undoManager.isUndoing || !_undoManager.isRedoing)
         [_undoManager setActionName:actionName];
+}
+
+// MARK: Content Encoding
+
+- (DrawingCanvasEncoderObject *)encoderHelperObject
+{
+    return [[DrawingCanvasEncoderObject alloc] initWithOvals:_ovals backgroundColor:[_backgroundColor copy]];
+}
+
+- (void)loadDataFromEncoder:(DrawingCanvasEncoderObject *)encoderObject
+{
+    _ovals = [NSMutableArray arrayWithArray:encoderObject.ovals];
+    _backgroundColor = encoderObject.backgroundColor;
+    self.needsDisplay = YES;
 }
 
 @end

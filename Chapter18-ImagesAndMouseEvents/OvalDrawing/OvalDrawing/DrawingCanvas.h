@@ -7,10 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DrawingCanvasEncoderObject.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DrawingCanvas : NSView
+
+@property (nonatomic, readonly) DrawingCanvasEncoderObject *encoderHelperObject;
+- (void)loadDataFromEncoder:(DrawingCanvasEncoderObject *)encoderObject;
 
 @end
 

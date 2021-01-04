@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, OvalTransformType) {
     OvalTraslation,
 };
 
-@interface Oval : NSBezierPath
+@interface Oval : NSBezierPath <NSSecureCoding>
 
 - (instancetype)initWithCenter:(NSPoint)center rect:(NSRect)rect color:(NSColor *)color filled:(BOOL)filled;
 

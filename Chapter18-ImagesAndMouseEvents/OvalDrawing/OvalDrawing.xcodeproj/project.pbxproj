@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A05272A25A2FE2F00BD6172 /* DrawingCanvasEncoderObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05272925A2FE2F00BD6172 /* DrawingCanvasEncoderObject.m */; };
 		0A6B1AB425A1B70200033A59 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B1AB325A1B70200033A59 /* AppDefaults.m */; };
 		C03D65B12544DECD00AA21C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65B02544DECD00AA21C8 /* AppDelegate.m */; };
 		C03D65B42544DECD00AA21C8 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D65B32544DECD00AA21C8 /* Document.m */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A05272825A2FE2F00BD6172 /* DrawingCanvasEncoderObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawingCanvasEncoderObject.h; sourceTree = "<group>"; };
+		0A05272925A2FE2F00BD6172 /* DrawingCanvasEncoderObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawingCanvasEncoderObject.m; sourceTree = "<group>"; };
 		0A6B1AB225A1B70200033A59 /* AppDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDefaults.h; sourceTree = "<group>"; };
 		0A6B1AB325A1B70200033A59 /* AppDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDefaults.m; sourceTree = "<group>"; };
 		C03D65AC2544DECD00AA21C8 /* OvalDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OvalDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +105,8 @@
 				C03D65D7254EA52300AA21C8 /* DrawingDocumentWindowController.m */,
 				0A6B1AB225A1B70200033A59 /* AppDefaults.h */,
 				0A6B1AB325A1B70200033A59 /* AppDefaults.m */,
+				0A05272825A2FE2F00BD6172 /* DrawingCanvasEncoderObject.h */,
+				0A05272925A2FE2F00BD6172 /* DrawingCanvasEncoderObject.m */,
 			);
 			path = OvalDrawing;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A05272A25A2FE2F00BD6172 /* DrawingCanvasEncoderObject.m in Sources */,
 				C03D65CB254D829400AA21C8 /* Oval.m in Sources */,
 				C03D65D8254EA52300AA21C8 /* DrawingDocumentWindowController.m in Sources */,
 				C03D65B42544DECD00AA21C8 /* Document.m in Sources */,

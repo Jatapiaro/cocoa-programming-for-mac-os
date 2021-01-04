@@ -7,7 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="Document">
             <connections>
-                <outlet property="drawingCanvas" destination="g8w-dU-f7I" id="tSX-Y7-eY3"/>
+                <outlet property="drawingCanvas" destination="g8w-dU-f7I" id="eqH-g0-56z"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
         </customObject>

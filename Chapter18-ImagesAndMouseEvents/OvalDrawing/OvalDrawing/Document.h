@@ -7,8 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DrawingCanvas.h"
 
 @interface Document : NSDocument
+
+@property (nonatomic, strong) DrawingCanvas *drawingCanvas;
 
 @end
 
