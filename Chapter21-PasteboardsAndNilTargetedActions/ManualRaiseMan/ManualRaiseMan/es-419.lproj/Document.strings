@@ -1,0 +1,21 @@
+
+/* Class = "NSButtonCell"; title = "Add Employee"; ObjectID = "CTd-uu-rkz"; */
+"CTd-uu-rkz.title" = "Añadir Empleado";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "IES-Hq-7DW"; */
+"IES-Hq-7DW.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "Expected Rise"; ObjectID = "JUR-j2-dqJ"; */
+"JUR-j2-dqJ.headerCell.title" = "Aumento";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "N4p-zC-4Ly"; */
+"N4p-zC-4Ly.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Remove"; ObjectID = "WOn-5u-smr"; */
+"WOn-5u-smr.title" = "Eliminar";
+
+/* Class = "NSTableColumn"; headerCell.title = "Name"; ObjectID = "lE4-N8-ZQk"; */
+"lE4-N8-ZQk.headerCell.title" = "Nombre";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "xOd-HO-29H"; */
+"xOd-HO-29H.title" = "Window";

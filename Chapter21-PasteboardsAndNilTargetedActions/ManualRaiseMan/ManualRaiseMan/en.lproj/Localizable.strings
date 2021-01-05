@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  ManualRaiseMan
+
+  Created by Jacobo Tapia on 9/7/20.
+  Copyright © 2020 Jacobo Tapia. All rights reserved.
+*/
+
+"REMOVE_MSG" = "Do you really want to remove these people?";
+
+"REMOVE_INF" = "%d people will be removed";
+
+"REMOVE" = "Remove";
+
+"CANCEL" = "Cancel";
+
+"KEEP" = "Keep, but not raise";
