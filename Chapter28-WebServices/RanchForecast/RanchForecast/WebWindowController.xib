@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="17701"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="WebWindowController">
+            <connections>
+                <outlet property="progress" destination="1pg-Oj-50x" id="rHE-wq-bfv"/>
+                <outlet property="webView" destination="u58-eL-qd0" id="bNM-Rc-gdS"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="500" height="500"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <view key="contentView" misplaced="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="468" height="500"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPN-xr-Xj8">
+                        <rect key="frame" x="0.0" y="0.0" width="468" height="490"/>
+                        <subviews>
+                            <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ceU-s6-AcV">
+                                <rect key="frame" x="8" y="451" width="460" height="39"/>
+                                <beginningViews>
+                                    <button horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CSG-dn-Uru">
+                                        <rect key="frame" x="0.0" y="10.5" width="19" height="19"/>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="wS5-Rt-bak">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <imageReference key="image" image="xmark.circle" catalog="system" symbolScale="large"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="closeWebView:" target="-2" id="n0i-k5-A0m"/>
+                                        </connections>
+                                    </button>
+                                </beginningViews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <progressIndicator verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="1pg-Oj-50x">
+                                <rect key="frame" x="0.0" y="424" width="468" height="20"/>
+                            </progressIndicator>
+                            <wkWebView wantsLayer="YES" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="u58-eL-qd0">
+                                <rect key="frame" x="0.0" y="0.0" width="468" height="417"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                                <connections>
+                                    <outlet property="UIDelegate" destination="-2" id="Ptz-of-rSJ"/>
+                                    <outlet property="navigationDelegate" destination="-2" id="q5I-Ud-Vfg"/>
+                                </connections>
+                            </wkWebView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="1pg-Oj-50x" firstAttribute="leading" secondItem="hPN-xr-Xj8" secondAttribute="leading" id="5S7-kz-Oa2"/>
+                            <constraint firstAttribute="trailing" secondItem="ceU-s6-AcV" secondAttribute="trailing" id="AyZ-QG-uGb"/>
+                            <constraint firstAttribute="trailing" secondItem="u58-eL-qd0" secondAttribute="trailing" id="MkW-1h-5xD"/>
+                            <constraint firstAttribute="trailing" secondItem="1pg-Oj-50x" secondAttribute="trailing" id="h6W-ZM-xnU"/>
+                            <constraint firstAttribute="bottom" secondItem="u58-eL-qd0" secondAttribute="bottom" id="lgV-8x-iwj"/>
+                            <constraint firstItem="ceU-s6-AcV" firstAttribute="leading" secondItem="hPN-xr-Xj8" secondAttribute="leading" constant="8" id="phZ-iv-K5S"/>
+                        </constraints>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="hPN-xr-Xj8" secondAttribute="trailing" id="TGd-gx-bI2"/>
+                    <constraint firstItem="hPN-xr-Xj8" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="U4P-V5-5SI"/>
+                    <constraint firstAttribute="bottom" secondItem="hPN-xr-Xj8" secondAttribute="bottom" id="cpT-su-Rvi"/>
+                    <constraint firstItem="hPN-xr-Xj8" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="10" id="nLr-zz-MBp"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="-88" y="147"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="xmark.circle" catalog="system" width="19" height="19"/>
+    </resources>
+</document>
