@@ -16,20 +16,20 @@
         <window title="Ranch Forecast" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="324"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="324"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjv-0I-5PJ">
-                        <rect key="frame" x="10" y="10" width="460" height="250"/>
+                        <rect key="frame" x="10" y="10" width="460" height="304"/>
                         <clipView key="contentView" id="vgt-8B-2gK">
-                            <rect key="frame" x="1" y="1" width="458" height="248"/>
+                            <rect key="frame" x="1" y="1" width="458" height="302"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" headerView="Nmw-4a-Jtx" viewBased="YES" id="ILg-6V-UY2">
-                                    <rect key="frame" x="0.0" y="0.0" width="458" height="220"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="458" height="274"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="17" height="0.0"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -132,7 +132,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-224" y="181"/>
+            <point key="canvasLocation" x="-224" y="208"/>
         </window>
     </objects>
 </document>

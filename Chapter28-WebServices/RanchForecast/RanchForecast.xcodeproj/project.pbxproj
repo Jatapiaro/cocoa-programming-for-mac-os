@@ -15,6 +15,8 @@
 		0A3F27A925B0B39E005EDB35 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3F27A725B0B39E005EDB35 /* MainWindowController.xib */; };
 		0A3F27AD25B0B4B7005EDB35 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3F27AC25B0B4B7005EDB35 /* Course.m */; };
 		0A3F27B125B0BC80005EDB35 /* ScheduleFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3F27B025B0BC80005EDB35 /* ScheduleFetcher.m */; };
+		0A3F27B625B24EA2005EDB35 /* WebWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3F27B425B24EA2005EDB35 /* WebWindowController.m */; };
+		0A3F27B725B24EA2005EDB35 /* WebWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3F27B525B24EA2005EDB35 /* WebWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,9 @@
 		0A3F27AC25B0B4B7005EDB35 /* Course.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		0A3F27AF25B0BC80005EDB35 /* ScheduleFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFetcher.h; sourceTree = "<group>"; };
 		0A3F27B025B0BC80005EDB35 /* ScheduleFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleFetcher.m; sourceTree = "<group>"; };
+		0A3F27B325B24EA2005EDB35 /* WebWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebWindowController.h; sourceTree = "<group>"; };
+		0A3F27B425B24EA2005EDB35 /* WebWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebWindowController.m; sourceTree = "<group>"; };
+		0A3F27B525B24EA2005EDB35 /* WebWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,9 @@
 				0A3F27A525B0B39E005EDB35 /* MainWindowController.h */,
 				0A3F27A625B0B39E005EDB35 /* MainWindowController.m */,
 				0A3F27A725B0B39E005EDB35 /* MainWindowController.xib */,
+				0A3F27B325B24EA2005EDB35 /* WebWindowController.h */,
+				0A3F27B425B24EA2005EDB35 /* WebWindowController.m */,
+				0A3F27B525B24EA2005EDB35 /* WebWindowController.xib */,
 				0A3F27AB25B0B4B7005EDB35 /* Course.h */,
 				0A3F27AC25B0B4B7005EDB35 /* Course.m */,
 				0A3F27AF25B0BC80005EDB35 /* ScheduleFetcher.h */,
@@ -141,6 +149,7 @@
 			files = (
 				0A3F279725B0B255005EDB35 /* Assets.xcassets in Resources */,
 				0A3F27A925B0B39E005EDB35 /* MainWindowController.xib in Resources */,
+				0A3F27B725B24EA2005EDB35 /* WebWindowController.xib in Resources */,
 				0A3F279A25B0B255005EDB35 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,6 +165,7 @@
 				0A3F27B125B0BC80005EDB35 /* ScheduleFetcher.m in Sources */,
 				0A3F27A825B0B39E005EDB35 /* MainWindowController.m in Sources */,
 				0A3F279D25B0B255005EDB35 /* main.m in Sources */,
+				0A3F27B625B24EA2005EDB35 /* WebWindowController.m in Sources */,
 				0A3F279525B0B254005EDB35 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -41,7 +41,7 @@
         return nil;
 
     _session = [NSURLSession sessionWithConfiguration:NSURLSessionConfiguration.defaultSessionConfiguration];
-    _url = [[NSURL alloc] initWithString:@"https://api.npoint.io/0b8ea85e5c4bd8b8ae75"];
+    _url = [[NSURL alloc] initWithString:@"https://api.npoint.io/103c08eec5963d55792e"];
     _courses = [NSMutableArray array];
 
     return self;

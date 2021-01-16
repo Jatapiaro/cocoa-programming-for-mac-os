@@ -21,6 +21,7 @@
 
     _title = [title copy];
     _url = url;
+    _urlRequest = [NSURLRequest requestWithURL:_url];
     _nextStartDate = startDate;
 
     return self;

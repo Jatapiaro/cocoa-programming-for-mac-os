@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly) NSURL *url;
 @property (nonatomic, readonly) NSDate *nextStartDate;
+@property (nonatomic, readonly) NSURLRequest *urlRequest;
 
 - (id)initWithTitle:(NSString *)title url:(NSURL *)url startDate:(NSDate *)startDate NS_DESIGNATED_INITIALIZER;
 

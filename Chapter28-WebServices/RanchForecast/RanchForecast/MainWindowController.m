@@ -9,7 +9,7 @@
 
 #import "Course.h"
 #import "ScheduleFetcher.h"
-
+#import "WebWindowController.h"
 
 @interface MainWindowController () <NSTableViewDataSource, NSTableViewDelegate>
 @property (nonatomic, weak) IBOutlet NSTableView *coursesTable;
@@ -18,6 +18,7 @@
 @implementation MainWindowController {
     ScheduleFetcher *_scheduleFetcher;
     NSArray<Course *> *_courses;
+    WebWindowController *_webWindowController;
 }
 
 - (NSNibName)windowNibName
@@ -31,13 +32,17 @@
 
     _coursesTable.target = self;
     _coursesTable.doubleAction = @selector(_openClass);
+    _webWindowController = [[WebWindowController alloc] init];
+
     [self _reloadData];
 }
 
 - (void)_openClass
 {
     Course *course = _courses[_coursesTable.selectedRow];
-    [NSWorkspace.sharedWorkspace openURL:course.url];
+    // [NSWorkspace.sharedWorkspace openURL:course.url];
+
+    [_webWindowController showWindowAsSheetFromWindow:self.window withRequest:course.urlRequest];
 }
 
 - (void)_reloadData
