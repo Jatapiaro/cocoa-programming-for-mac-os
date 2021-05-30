@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E232" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Department" representedClassName="Department" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="employees" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employee" inverseName="department" inverseEntity="Employee"/>
+        <relationship name="manager" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employee"/>
+    </entity>
+    <entity name="Employee" representedClassName="Employee" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <relationship name="department" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Department" inverseName="employees" inverseEntity="Department"/>
+    </entity>
+    <elements>
+        <element name="Employee" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="Department" positionX="-54" positionY="-9" width="128" height="74"/>
+    </elements>
+</model>
